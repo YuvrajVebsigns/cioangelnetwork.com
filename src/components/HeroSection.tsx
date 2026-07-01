@@ -74,7 +74,7 @@ export default function HeroSection() {
       {show && (
         <div className="hero-image-only animate__animated animate__jackInTheBox">
           <Image
-            src="/assets/header4.png"
+            src="/assets/heropowerlist.webp"
             alt="Hero Banner"
             width={1920}
             height={800}

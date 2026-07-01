@@ -9,75 +9,48 @@ export default function AboutUsSection() {
     initialTransform: 'translateY(40px)',
   });
 
-  const cardRef1 = useScrollAnimation<HTMLDivElement>({
-    animationClass: 'animate-fade-in-left',
-    initialTransform: 'translateX(-28px)',
-    threshold: 0.12,
-  });
-
-  const cardRef2 = useScrollAnimation<HTMLDivElement>({
-    animationClass: 'animate-fade-in-left',
-    initialTransform: 'translateX(-28px)',
-    threshold: 0.12,
-  });
-
-  const cardRef3 = useScrollAnimation<HTMLDivElement>({
-    animationClass: 'animate-fade-in-left',
-    initialTransform: 'translateX(-28px)',
-    threshold: 0.12,
-  });
-
-  const cardRef4 = useScrollAnimation<HTMLDivElement>({
-    animationClass: 'animate-fade-in-left',
-    initialTransform: 'translateX(-28px)',
-    threshold: 0.12,
-  });
-
-  const cardRef5 = useScrollAnimation<HTMLDivElement>({
-    animationClass: 'animate-fade-in-left',
-    initialTransform: 'translateX(-28px)',
-    threshold: 0.12,
-  });
-
   const cards = [
     {
-      image: '/assets/aboutus/recognized.png',
-      hoverImage: '/assets/aboutus/recognized-dark.png',
-      title: '130+ CIO Leaders',
-      description:
-        'Recognising influential CIOs and ICT leaders driving innovation and business transformation across industries.',
+      icon: '/assets/aboutus/recognized.png',
+      title: 'Showcase Innovations',
+      description: 'Shed light on innovative tech products and services to influential leaders.',
     },
     {
-      image: '/assets/aboutus/technology2.png',
-      hoverImage: '/assets/aboutus/technology-dark.png',
-      title: 'Data-Driven Selection',
-      description:
-        'Winners are chosen through a transparent algorithm-based evaluation process with no jury involvement.',
+      icon: '/assets/aboutus/technology2.png',
+      title: 'Direct Access',
+      description: 'Engage with leading CIOs and digital leaders directly',
     },
     {
-      image: '/assets/aboutus/winner.png',
-      hoverImage: '/assets/aboutus/winner-dark.png',
-      title: 'Industry Impact',
-      description:
-        'Celebrating leaders creating measurable technology and business impact through strategic initiatives.',
+      icon: '/assets/aboutus/winner.png',
+      title: 'Lead Generation',
+      description: 'Discover new business opportunities',
     },
     {
-      image: '/assets/aboutus/leadership.png',
-      hoverImage: '/assets/aboutus/leadership-dark.png',
-      title: 'Leadership Forum',
-      description:
-        'A prestigious platform for networking, knowledge sharing, recognition, and industry collaboration.',
+      icon: '/assets/aboutus/leadership.png',
+      title: 'Networking Opportunities',
+      description: 'Connect with peers, clients, and potential customers',
     },
     {
-      image: '/assets/aboutus/learn.png',
-      hoverImage: '/assets/aboutus/learn-dark.png',
-      title: 'Learn & Connect',
-      description:
-        'Engage with peers, gain valuable insights, and celebrate excellence in technology leadership.',
+      icon: '/assets/aboutus/learn.png',
+      title: 'Insightful Discussions',
+      description: 'Gain firsthand insights into CIOs challenges and priorities',
+    },
+    {
+      icon: '/assets/aboutus/showcase.png',
+      title: 'Increase Visibility',
+      description: 'Boost your company’s profile in the tech ecosystem',
+    },
+    {
+      icon: '/assets/aboutus/networking.png',
+      title: 'Collaborate',
+      description: 'Explore partnerships with leading organisations',
+    },
+    {
+      icon: '/assets/aboutus/lead-generation.png',
+      title: 'Stay Ahead',
+      description: 'Monitor market dynamics and emerging trends',
     },
   ];
-
-  const cardRefs = [cardRef1, cardRef2, cardRef3, cardRef4, cardRef5];
 
   return (
     <section ref={sectionRef} className="aboutus-section">
@@ -86,7 +59,7 @@ export default function AboutUsSection() {
           <div className="aboutus-label">
             <Image
               src="/assets/icon.png"
-              alt="CIO Power List"
+              alt="About Us"
               width={20}
               height={20}
               className="aboutus-label-icon"
@@ -95,26 +68,42 @@ export default function AboutUsSection() {
             <span className="aboutus-label-text">ABOUT THE INITIATIVE</span>
           </div>
 
-          <h2 className="aboutus-title">
-            About Us &
-            <br />
-            <span>Driving the Future of Enterprise Technology</span>
-          </h2>
+          <h2 className="aboutus-title">About Us</h2>
+        </div>
 
-          {/* <p className="aboutus-intro">
-            CIO Power List celebrates visionary CIOs and ICT leaders driving innovation, transformation, business growth across India.
-          </p> */}
+        <div className="aboutus-info-section">
+          <div className="aboutus-info-left">
+            <p>
+              The rapid advancement of cutting-edge technologies is intensifying competition across
+              the ICT landscape, both locally and globally. As markets become more competitive,
+              visionary leadership is crucial for growth and sustainability.
+            </p>
+          </div>
+
+          <div className="aboutus-info-right">
+            <h3>What is CIO Power List MEA?</h3>
+
+            <p>
+              CIO Power List MEA, featuring <strong>The ICONIC CIO</strong>, curated by CXO Capital,
+              brings together Middle East & Africa’s top tech leaders. This platform sparks dynamic
+              discussions and offers insights into the latest technological trends in the ICT
+              industry.
+            </p>
+
+            <p>
+              The event honours Chief Information Officers (CIOs) driving modernization and digital
+              disruption across the region with the CIO Power List MEA recognition. These leaders
+              are advancing innovation, setting new industry standards, and seizing emerging
+              opportunities to fuel business growth.
+            </p>
+          </div>
         </div>
 
         <div className="aboutus-grid">
           {cards.map((card, index) => (
-            <div
-              key={card.title}
-              ref={cardRefs[index]}
-              className={`aboutus-card aboutus-stagger-${index + 1}`}
-            >
+            <div key={card.title} className={`aboutus-card aboutus-stagger-${index + 1}`}>
               <div className="aboutus-image-wrapper">
-                <img src={card.image} alt={card.title} className="aboutus-image" />
+                <img src={card.icon} alt={card.title} className="aboutus-image" />
               </div>
 
               <h3 className="aboutus-card-title">{card.title}</h3>

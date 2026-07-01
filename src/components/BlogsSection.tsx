@@ -493,7 +493,7 @@ export default function BlogsSection() {
           <span className="blogs-subtitle">
             <Image
               src="/assets/icon.png"
-              alt="Key Clients"
+              alt="About Us"
               width={20}
               height={20}
               className="expertise-label-icon"

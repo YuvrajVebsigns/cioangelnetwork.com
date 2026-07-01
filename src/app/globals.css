@@ -7500,67 +7500,113 @@ main {
 
 /* registration form */
 
+/* =========================================================
+   REGISTRATION SECTION - PREMIUM SPLIT CARD DESIGN
+========================================================= */
+
 .registration-section {
   width: 100%;
   min-height: 100vh;
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #d7cccc 0%, #f3ebeb 40%, #f9f3f3 100%);
+  padding: 110px 20px;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(142, 1, 1, 0.16), transparent 28%),
+    radial-gradient(circle at 90% 85%, rgba(142, 1, 1, 0.12), transparent 26%),
+    linear-gradient(135deg, #fff 0%, #f5eeee 55%, #eadede 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   overflow: visible;
 }
 
 .registration-container {
   width: 100%;
-  max-width: 1050px;
+  max-width: 1180px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
 }
 
 .registration-wrapper {
-  width: 100%;
-  max-width: 800px;
-  margin: 15px auto 0;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #9d1111;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-  overflow: visible;
   position: relative;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  overflow: visible;
+  border-radius: 34px;
+  background: #ffffff;
+  border: 1px solid rgba(142, 1, 1, 0.16);
+  box-shadow: 0 30px 80px rgba(40, 10, 10, 0.16);
+}
+
+.registration-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 210px;
+  border-radius: 34px 0 0 34px;
+  background:
+    linear-gradient(180deg, rgba(142, 1, 1, 0.95), rgba(70, 0, 0, 0.95)),
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.28), transparent 35%);
 }
 
 .registration-title {
+  position: relative;
   margin: 0;
-  padding: 22px 30px;
-  border-radius: 28px 28px 0 0;
-  background: linear-gradient(90deg, #8e0101 0%, #9d1111 100%);
-  color: #fff;
-  font-size: 20px;
-  font-weight: 500;
+  padding: 36px 42px 18px 250px;
+  color: #8e0101;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
 }
 
+.registration-title::before {
+  content: 'Register';
+  position: absolute;
+  left: 38px;
+  top: 42px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.registration-title::after {
+  content: 'Complete your details to reserve your place.';
+  display: block;
+  margin-top: 8px;
+  color: #6a5555;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 .registration-form {
+  position: relative;
   width: 100%;
-  padding: 30px 40px 40px;
+  padding: 22px 42px 46px 250px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px 30px;
+  gap: 22px 34px;
 }
 
 .registration-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #585555;
-  position: relative;
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 4px;
+  color: #4b3f3f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.registration-label:nth-of-type(9) {
+  grid-column: 1 / -1;
+}
+
+.registration-label > input,
+.registration-label > select,
+.registration-label > .custom-select-wrap {
+  width: 100%;
 }
 
 .registration-form input,
@@ -7569,14 +7615,15 @@ main {
 .custom-select-btn {
   width: 100%;
   height: 48px;
-  padding: 0 16px;
-  border: 2px solid #ddd;
-  border-radius: 999px;
-  background: #fff;
+  padding: 0 15px;
+  border: 1px solid rgba(142, 1, 1, 0.18);
+  border-radius: 14px;
+  background: #fffafa;
   outline: none;
-  font-size: 15px;
-  color: #2f2e2e;
+  color: #231f1f;
+  font-size: 14px;
   box-sizing: border-box;
+  transition: 0.25s ease;
 }
 
 .registration-form input:focus,
@@ -7584,7 +7631,8 @@ main {
 .registration-country-select:focus,
 .custom-select-btn:focus {
   border-color: #8e0101;
-  box-shadow: 0 0 0 4px rgba(142, 1, 1, 0.15);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(142, 1, 1, 0.1);
 }
 
 .custom-select-wrap {
@@ -7614,28 +7662,27 @@ main {
 
 .custom-select-menu {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 8px);
   left: 0;
   width: 100%;
-  max-height: 120px;
+  max-height: 150px;
   overflow-y: auto;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  border: 1px solid rgba(142, 1, 1, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 18px 36px rgba(48, 14, 14, 0.16);
   z-index: 9999;
 }
 
 .custom-select-option {
   width: 100%;
-  min-height: 28px;
-  padding: 6px 14px;
+  min-height: 34px;
+  padding: 8px 14px;
   border: 0;
-  background: #fff;
-  color: #222;
+  background: #ffffff;
+  color: #2b2424;
   text-align: left;
   font-size: 13px;
-  line-height: 1.2;
   cursor: pointer;
 }
 
@@ -7645,34 +7692,42 @@ main {
 }
 
 .registration-error {
-  margin-top: 4px;
-  font-size: 13px;
-  font-weight: 500;
+  grid-column: 2;
+  margin-top: 2px;
   color: #8e0101;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .registration-button-wrap {
   grid-column: 1 / -1;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .registration-btn {
-  height: 58px;
-  padding: 0 42px;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #8e0101 0%, #9d1111 100%);
-  color: #fff;
+  height: 54px;
+  min-width: 230px;
+  padding: 0 34px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #8e0101, #b31919);
+  color: #ffffff;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(142, 1, 1, 0.3);
+  box-shadow: 0 14px 30px rgba(142, 1, 1, 0.28);
+  transition: 0.25s ease;
+}
+
+.registration-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(142, 1, 1, 0.34);
 }
 
 .registration-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
@@ -7686,8 +7741,8 @@ main {
   gap: 12px;
   max-width: 360px;
   padding: 14px 16px;
-  border-radius: 14px;
-  background: #fff;
+  border-radius: 16px;
+  background: #ffffff;
   color: #7a0d0d;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
 }
@@ -7695,7 +7750,7 @@ main {
 .registration-popup p {
   margin: 0;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .registration-popup-dot {
@@ -7713,6 +7768,8 @@ main {
   font-size: 20px;
   cursor: pointer;
 }
+
+/* DOWNLOAD REPORT */
 
 .download-report-section {
   width: 100%;
@@ -7748,19 +7805,33 @@ main {
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
   .registration-section {
-    padding: 70px 16px;
+    padding: 80px 16px;
   }
 
   .registration-wrapper {
     max-width: 100%;
-    border-radius: 22px;
+    border-radius: 26px;
+  }
+
+  .registration-wrapper::before {
+    width: 100%;
+    height: 110px;
+    border-radius: 26px 26px 0 0;
   }
 
   .registration-title {
-    border-radius: 22px 22px 0 0;
-    font-size: 18px;
+    padding: 150px 24px 18px;
+    font-size: 22px;
+  }
+
+  .registration-title::before {
+    top: 38px;
+    left: 24px;
+    font-size: 24px;
   }
 
   .registration-form {
@@ -7768,157 +7839,134 @@ main {
     grid-template-columns: 1fr;
   }
 
+  .registration-label {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .registration-label:nth-of-type(9) {
+    grid-column: auto;
+  }
+
+  .registration-error {
+    grid-column: 1;
+  }
+
+  .registration-button-wrap {
+    justify-content: center;
+  }
+
   .registration-btn {
     width: 100%;
   }
 
   .custom-select-menu {
-    max-height: 75px;
+    max-height: 90px;
   }
 }
-/* =========================================
-   NOMINATE PAGE
-========================================= */
+/* =========================================================
+   NOMINATE PAGE - PREMIUM SPLIT CARD DESIGN
+========================================================= */
 
 .nominate-page-container {
   width: 100%;
   min-height: 100vh;
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #d7cccc 0%, #f3ebeb 40%, #f9f3f3 100%);
+  padding: 110px 20px;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(142, 1, 1, 0.16), transparent 28%),
+    radial-gradient(circle at 90% 85%, rgba(142, 1, 1, 0.12), transparent 26%),
+    linear-gradient(135deg, #ffffff 0%, #f5eeee 55%, #eadede 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
-
-/* Decorative blur circles */
-
-.nominate-page-container::before,
-.nominate-page-container::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-}
-
-.nominate-page-container::before {
-  width: 300px;
-  height: 300px;
-  background: rgba(255, 255, 255, 0.12);
-  top: -120px;
-  left: -100px;
-}
-
-.nominate-page-container::after {
-  width: 260px;
-  height: 260px;
-  background: rgba(255, 255, 255, 0.08);
-  bottom: -120px;
-  right: -100px;
-}
-
-/* =========================================
-   CONTAINER
-========================================= */
 
 .nominate-page-content {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1180px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  margin-top: 20px;
 }
 
-/* =========================================
-   TITLE
-========================================= */
-
-.nominate-page-content h1 {
-  font-size: 25px;
-  line-height: 1.1;
-  font-weight: 700;
-  color: #242424;
-  margin-bottom: 24px;
-}
-
-.nominate-page-content h3 {
-  font-size: 16px;
-  line-height: 0.9;
-  font-weight: 700;
-  color: #363434;
-  margin-top: 30px;
-  margin-bottom: 14px;
-}
-
+.nominate-page-content h1,
+.nominate-page-content h3,
 .nominate-page-content p,
-.nominate-page-content li {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #555555;
-}
-
 .nominate-page-content ol {
-  padding-left: 22px;
-  margin-bottom: 18px;
+  display: none;
 }
-
-/* =========================================
-   CARD WRAPPER
-========================================= */
 
 .nominate-wrapper {
-  margin-top: 50px;
-  width: 1100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
-/* =========================================
-   CARD
-========================================= */
-
 .nominate-card {
-  width: 160%;
-  max-width: 1200px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #9d1111;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.12);
-  overflow: hidden;
-  margin-right: -6px;
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  border-radius: 34px;
+  background: #ffffff;
+  border: 1px solid rgba(142, 1, 1, 0.16);
+  box-shadow: 0 30px 80px rgba(40, 10, 10, 0.16);
+}
+
+.nominate-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 210px;
+  border-radius: 34px 0 0 34px;
+  background:
+    linear-gradient(180deg, rgba(142, 1, 1, 0.95), rgba(70, 0, 0, 0.95)),
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.28), transparent 35%);
 }
 
 .nominate-card-header {
-  padding: 22px 30px;
-  background: linear-gradient(90deg, #8e0101 0%, #9d1111 100%);
+  position: relative;
+  padding: 36px 42px 18px 250px;
+  background: transparent;
+  color: #8e0101;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.nominate-card-header::before {
+  content: 'Nominate';
+  position: absolute;
+  left: 38px;
+  top: 42px;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.nominate-card-header::after {
+  content: 'Complete nominee details to submit your nomination.';
+  display: block;
+  margin-top: 8px;
+  color: #6a5555;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 1px;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .nominate-card-body {
-  padding: 40px;
+  position: relative;
+  padding: 22px 42px 46px 250px;
 }
 
 .nominate-sub {
-  margin-bottom: 30px;
-  color: rgba(53, 51, 51, 0.8);
-  font-size: 15px;
+  margin: 0 0 24px;
+  color: #6a5555;
+  font-size: 14px;
   line-height: 1.7;
 }
-
-/* =========================================
-   FORM
-========================================= */
 
 .nominate-form {
   width: 100%;
@@ -7926,73 +7974,85 @@ main {
 
 .nominate-fieldset {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  column-gap: 70px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 34px;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .nominate-legend {
   grid-column: 1 / -1;
-  margin-bottom: 20px;
+  margin-bottom: 4px;
+  color: #8e0101;
+  font-size: 17px;
+  font-weight: 800;
 }
 
 .nominate-label {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 8px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: #585555;
+  color: #4b3f3f;
+  font-size: 13px;
+  font-weight: 800;
 }
 
-/* =========================================
-   INPUTS
-========================================= */
+.nominate-label span {
+  min-height: 18px;
+}
 
-.nominate-input-field {
+.nominate-label > input,
+.nominate-label > select,
+.nominate-label > .custom-select-wrap {
+  width: 100%;
+}
+
+.nominate-input-field,
+.nominate-form select {
   width: 100%;
   height: 48px;
-  padding: 0 16px;
-  border: 2px solid #ddd;
-  border-radius: 999px;
-  background: #fff;
+  padding: 0 15px;
+  border: 1px solid rgba(142, 1, 1, 0.18);
+  border-radius: 14px;
+  background: #fffafa;
+  outline: none;
+  color: #231f1f;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: 0.25s ease;
+}
+
+.nominate-input-field:focus,
+.nominate-form select:focus {
+  border-color: #8e0101;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(142, 1, 1, 0.1);
 }
 
 .nominate-input-field::placeholder {
-  color: #8f8f8f;
+  color: #9b8b8b;
 }
-
-.nominate-input-field:focus {
-  outline: none;
-  border: 2px solid #8e0101;
-  box-shadow: 0 0 0 4px rgba(142, 1, 1, 0.15);
-}
-
-/* =========================================
-   CIO BLOCK
-========================================= */
-
-/* =========================================
-   CIO BLOCK
-========================================= */
 
 .nominate-cio-block {
-  padding: 24px;
+  grid-column: 1 / -1;
+  padding: 22px;
   margin-bottom: 24px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(157, 17, 17, 0.2);
-  transform-origin: center center;
+  background: #fffafa;
+  border: 1px solid rgba(142, 1, 1, 0.14);
+  transition: 0.25s ease;
 }
 
-.cio-slide-in {
-  animation: backInRight 0.8s ease forwards;
+.nominate-cio-block .nominate-fieldset {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 26px;
 }
 
-.cio-slide-out {
-  animation: backOutLeft 0.6s ease forwards;
+.nominate-cio-block:hover {
+  transform: translateY(-3px);
+  border-color: rgba(142, 1, 1, 0.26);
+  box-shadow: 0 14px 34px rgba(142, 1, 1, 0.12);
 }
 
 .nominate-cio-top {
@@ -8000,77 +8060,19 @@ main {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
-  gap: 20px;
+  gap: 18px;
 }
 
 .nominate-cio-title {
   font-size: 18px;
-  font-weight: 700;
-  color: #363434;
+  font-weight: 800;
+  color: #8e0101;
 }
-
-/* Hover Effect */
-.nominate-cio-block:hover {
-  transform: translateY(-4px);
-  border-color: rgba(164, 0, 0, 0.3);
-  box-shadow: 0 12px 30px rgba(164, 0, 0, 0.12);
-  transition: all 0.3s ease;
-}
-
-/* =========================================
-   ADD CARD ANIMATION
-========================================= */
-
-@keyframes backInRight {
-  0% {
-    opacity: 0.7;
-    transform: translateX(2000px) scale(0.7);
-  }
-
-  80% {
-    opacity: 0.7;
-    transform: translateX(0) scale(0.7);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-
-/* =========================================
-   REMOVE CARD ANIMATION
-========================================= */
-
-@keyframes backOutLeft {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  20% {
-    opacity: 0.7;
-    transform: scale(0.7);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-2000px) scale(0.7);
-  }
-}
-
-/* =========================================
-   BUTTONS
-========================================= */
 
 .nominate-btn {
   border: none;
-  border-radius: 999px;
   cursor: pointer;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    opacity 0.3s ease;
+  transition: 0.25s ease;
 }
 
 .nominate-btn:hover {
@@ -8078,37 +8080,38 @@ main {
 }
 
 .nominate-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
   transform: none;
 }
 
-.nominate-btn-primary {
-  height: 58px;
-  padding: 0 36px;
-  background: linear-gradient(90deg, #8e0101 0%, #9d1111 100%);
+.nominate-btn-primary,
+.nominate-submit {
+  height: 54px;
+  min-width: 230px;
+  padding: 0 34px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #8e0101, #b31919);
   color: #ffffff;
   font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  box-shadow: 0 10px 25px rgba(180, 0, 0, 0.3);
+  font-weight: 800;
+  box-shadow: 0 14px 30px rgba(142, 1, 1, 0.28);
 }
 
-.nominate-btn-primary:hover {
-  box-shadow: 0 16px 35px rgba(142, 1, 1, 0.35);
+.nominate-btn-primary:hover,
+.nominate-submit:hover {
+  box-shadow: 0 18px 38px rgba(142, 1, 1, 0.34);
 }
 
 .nominate-btn-add {
-  height: 54px;
-  padding: 0 28px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #9d1111;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.nominate-btn-add:hover {
-  background: #ffffff;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 14px;
+  background: #fffafa;
+  color: #8e0101;
+  font-size: 14px;
+  font-weight: 800;
+  border: 1px solid rgba(142, 1, 1, 0.18);
 }
 
 .nominate-remove-btn {
@@ -8116,185 +8119,103 @@ main {
   border: none;
   color: #8e0101;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
 }
 
-/* =========================================
-   ADD BUTTON WRAP
-========================================= */
-
 .nominate-add-wrap {
-  margin-top: 10px;
+  margin-top: 18px;
 }
-
-/* =========================================
-   SUBMIT
-========================================= */
 
 .nominate-submit-row {
-  margin-left: 12cm;
-  margin-top: 35px;
+  margin-top: 30px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
   flex-direction: column;
-  gap: 14px;
-}
-
-.nominate-submit {
-  width: fit-content;
 }
 
 .nominate-submit-note {
-  margin-left: -5.1cm;
-  color: #666666;
+  margin: 0;
+  color: #6a5555;
   font-size: 13px;
   line-height: 1.6;
+  text-align: center;
 }
-
-/* =========================================
-   SUCCESS SECTION
-========================================= */
 
 .nominate-success-section {
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
-  padding: 40px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(16px);
-  border: 1px solid #9d1111;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  padding: 44px 34px;
+  border-radius: 30px;
+  background: #ffffff;
+  border: 1px solid rgba(142, 1, 1, 0.16);
+  box-shadow: 0 30px 80px rgba(40, 10, 10, 0.16);
   text-align: center;
 }
 
 .nominate-success-section h1 {
-  font-size: 38px;
-  line-height: 1.2;
-  color: #363434;
-  margin-bottom: 20px;
+  color: #8e0101;
+  font-size: 34px;
+  font-weight: 800;
 }
 
 .nominate-success-section p {
   color: #555555;
   line-height: 1.8;
-  margin-bottom: 14px;
 }
 
 .nominate-success-section a {
-  color: #9d1111;
-  font-weight: 700;
+  color: #8e0101;
+  font-weight: 800;
   text-decoration: none;
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nominate-page-container {
-    padding: 70px 16px;
-    min-height: auto;
-  }
-
-  .nominate-page-content {
-    width: 100%;
-    margin-top: 0;
-  }
-
-  .nominate-page-content h1 {
-    font-size: 24px;
-    line-height: 1.25;
-  }
-
-  .nominate-page-content h3 {
-    font-size: 18px;
-    line-height: 1.3;
-  }
-
-  .nominate-page-content p,
-  .nominate-page-content li {
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  .nominate-wrapper {
-    width: 100%;
-    margin-top: 20px;
+    padding: 80px 16px;
   }
 
   .nominate-card {
+    border-radius: 26px;
+  }
+
+  .nominate-card::before {
     width: 100%;
-    max-width: 100%;
-    margin-right: 0;
-    border-radius: 22px;
+    height: 110px;
+    border-radius: 26px 26px 0 0;
   }
 
   .nominate-card-header {
-    padding: 18px 20px;
-    font-size: 16px;
-    text-align: center;
+    padding: 150px 24px 18px;
+    font-size: 22px;
+  }
+
+  .nominate-card-header::before {
+    top: 38px;
+    left: 24px;
   }
 
   .nominate-card-body {
-    padding: 22px 18px;
+    padding: 24px;
   }
 
-  .nominate-fieldset {
+  .nominate-fieldset,
+  .nominate-cio-block .nominate-fieldset {
     grid-template-columns: 1fr;
-    gap: 18px;
-    column-gap: 0;
-  }
-
-  .nominate-label {
-    font-size: 13px;
-  }
-
-  .nominate-input-field {
-    height: 50px;
-    font-size: 14px;
-  }
-
-  .nominate-cio-block {
-    padding: 18px 14px;
-    border-radius: 20px;
   }
 
   .nominate-cio-top {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
   }
 
   .nominate-btn-add,
   .nominate-btn-primary,
   .nominate-submit {
     width: 100%;
-  }
-
-  .nominate-submit-row {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 28px;
-    align-items: stretch;
-  }
-
-  .nominate-submit-note {
-    margin-left: 0;
-    margin-right: 0;
-    text-align: left;
-  }
-
-  .nominate-success-section {
-    width: 100%;
-    padding: 28px 22px;
-    border-radius: 22px;
-  }
-
-  .nominate-success-section h1 {
-    font-size: 26px;
   }
 }
 
@@ -8304,14 +8225,9 @@ main {
   }
 
   .nominate-card-body {
-    padding: 20px 14px;
-  }
-
-  .nominate-card-header {
-    font-size: 15px;
+    padding: 22px 16px;
   }
 }
-
 /* =========================================================
    PRELOADER
 ========================================================= */

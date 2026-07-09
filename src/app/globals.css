@@ -1593,31 +1593,61 @@ main {
 }
 
 .map-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
   position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #282727;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.15);
   animation: pulseDot 2s infinite;
 }
-
+/* india */
 .dot-1 {
-  top: 110%;
-  left: 35%;
-  background-color: #282626;
+  top: 49%;
+  left: 77%;
 }
-
+/* dubai */
 .dot-2 {
-  top: 53%;
-  left: 67%;
-  background-color: #353232;
+  top: 40%;
+  left: 60%;
 }
 
 .dot-3 {
-  top: 120%;
-  left: 26%;
-  background-color: #312f2f;
+  top: 45%;
+  left: 69%;
 }
 
+/* Map labels shown above each dot */
+
+.map-label {
+  position: absolute !important;
+  display: inline-block !important;
+  z-index: 130 !important;
+  pointer-events: none !important;
+  transform: translate(-50%, -160%) !important;
+  background: transparent !important;
+  color: black !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+}
+
+/* Position labels matching dots */
+.label-1 {
+  top: 47% !important;
+  left: 70% !important;
+}
+.label-2 {
+  top: 45% !important;
+  left: 60% !important;
+}
+.label-3 {
+  top: 53% !important;
+  left: 81% !important;
+}
 @keyframes pulseDot {
   0%,
   100% {
@@ -2111,8 +2141,9 @@ main {
 }
 
 .founder-image {
+  margin-top: -50px;
   width: 100%;
-  height: 100%;
+  height: 120%;
   object-fit: cover;
   object-position: center top;
   display: block;
@@ -2121,6 +2152,7 @@ main {
 /* CONTENT */
 
 .founder-content {
+  margin-top: 40px;
   position: relative;
   padding-left: 36px;
 }
@@ -2376,6 +2408,57 @@ main {
     justify-content: center;
   }
 }
+
+/* READ MORE */
+
+.founder-readmore-wrap {
+  position: relative;
+  z-index: 2;
+  margin: 28px 0 34px;
+}
+
+.founder-readmore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  color: #8e0101;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.founder-readmore-btn::after {
+  content: '→';
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.founder-readmore-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  width: 0;
+  height: 2px;
+  background: #8e0101;
+  transition: width 0.35s ease;
+}
+
+.founder-readmore-btn:hover {
+  color: #a40000;
+}
+
+.founder-readmore-btn:hover::before {
+  width: 100%;
+}
+
+.founder-readmore-btn:hover::after {
+  transform: translateX(6px);
+}
+
 /* =========================================================
    ABOUT US SECTION
 ========================================================= */
@@ -5644,7 +5727,7 @@ main {
    CONTACT SECTION
 ========================================================= */
 
-.contact-section {
+/* .contact-section {
   background: #a40000;
   padding: 90px 40px;
 }
@@ -5955,11 +6038,7 @@ main {
     top: 92%;
     left: 26%;
   }
-}
-
-/* =========================
-   BLOG SECTION
-========================= */
+} */
 
 .blogs-section {
   width: 100%;
@@ -9828,7 +9907,7 @@ s .dialogues-badge-mark {
   position: relative;
   background:
     radial-gradient(circle at top left, rgba(157, 0, 0, 0.1), transparent 34%),
-    linear-gradient(135deg, #f5eeee 0%, #eadede 55%, #dfd0d0 100%);
+    linear-gradient(135deg, #dcc4c4 55%, #dcc4c4 100%);
   padding-top: 90px;
   overflow: hidden;
 }
@@ -9852,15 +9931,13 @@ s .dialogues-badge-mark {
   padding: 0 24px;
 }
 
-/* MAIN */
-
 .footer-main {
   padding-bottom: 42px;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.9fr 0.9fr 1.25fr;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr 1.25fr;
   gap: 56px;
   padding: 54px;
   border-radius: 34px;
@@ -9870,12 +9947,27 @@ s .dialogues-badge-mark {
   backdrop-filter: blur(12px);
 }
 
-/* BRAND */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .footer-logo {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 24px;
+  justify-content: center;
+  width: 220px;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+.footer-logo img {
+  margin-top: -140px;
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .footer-description {
@@ -9886,7 +9978,12 @@ s .dialogues-badge-mark {
   margin: 0;
 }
 
-/* TITLES */
+.footer-description1 {
+  max-width: 340px;
+  font-size: 20px;
+  line-height: 1.8;
+  color: black;
+}
 
 .footer-title {
   position: relative;
@@ -9907,8 +10004,6 @@ s .dialogues-badge-mark {
   border-radius: 99px;
   background: #9d0000;
 }
-
-/* LINKS */
 
 .footer-links {
   display: flex;
@@ -9952,13 +10047,6 @@ s .dialogues-badge-mark {
   opacity: 1;
   transform: translateX(0);
 }
-
-/* REMOVE INVALID OLD CSS */
-.footer-widget footer-brand {
-  max-inline-size: unset;
-}
-
-/* SUBSCRIBE */
 
 .footer-subscribe {
   display: flex;
@@ -10006,28 +10094,6 @@ s .dialogues-badge-mark {
   background: #7d0000;
 }
 
-.footer-checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #3e3535;
-}
-
-.footer-checkbox input {
-  accent-color: #9d0000;
-  margin-top: 4px;
-}
-
-.footer-terms {
-  color: #9d0000;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-/* BOTTOM */
-
 .footer-bottom {
   padding: 26px 0;
 }
@@ -10039,8 +10105,6 @@ s .dialogues-badge-mark {
   gap: 24px;
   flex-wrap: wrap;
 }
-
-/* CONTACT */
 
 .footer-contact {
   display: flex;
@@ -10080,8 +10144,6 @@ s .dialogues-badge-mark {
   color: #1f1f1f;
 }
 
-/* SOCIAL */
-
 .footer-socials {
   display: flex;
   align-items: center;
@@ -10111,20 +10173,20 @@ s .dialogues-badge-mark {
   transform: translateY(-3px);
 }
 
-/* COPYRIGHT */
-
 .footer-copy {
   font-size: 14px;
   color: #1f1f1f;
 }
-
-/* RESPONSIVE */
 
 @media (max-width: 1100px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 42px;
     padding: 42px;
+  }
+
+  .footer-brand {
+    justify-content: flex-start;
   }
 }
 
@@ -10138,6 +10200,18 @@ s .dialogues-badge-mark {
     gap: 36px;
     padding: 34px 24px;
     border-radius: 26px;
+  }
+
+  .footer-brand {
+    justify-content: flex-start;
+  }
+
+  .footer-logo {
+    width: 190px;
+  }
+
+  .footer-logo img {
+    width: 190px;
   }
 
   .footer-bottom-wrapper {
@@ -10181,6 +10255,14 @@ s .dialogues-badge-mark {
   .footer-submit {
     width: 52px;
     height: 52px;
+  }
+
+  .footer-logo {
+    width: 170px;
+  }
+
+  .footer-logo img {
+    width: 170px;
   }
 }
 

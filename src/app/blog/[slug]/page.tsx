@@ -330,11 +330,10 @@ export default function BlogDetailsPage() {
                 initialTransform="translateY(18px)"
               >
                 <Link href="/blog" className="backbutton">
-                  <div className="backbutton-icon">
-                    <ArrowUpLeft size={18} />
-                  </div>
-
                   <span>Back to Blog</span>
+                  <div className="talk-btn-icon">
+                    <ArrowUpRight size={18} />
+                  </div>
                 </Link>
               </AnimatedBlock>
 

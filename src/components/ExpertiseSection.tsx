@@ -65,10 +65,10 @@ export default function AboutUsSection() {
               className="aboutus-label-icon"
             />
 
-            <span className="aboutus-label-text">ABOUT THE INITIATIVE</span>
+            <span className="aboutus-label-text">CIO POWERLIST MEA</span>
           </div>
 
-          <h2 className="aboutus-title">About Us</h2>
+          {/* <h2 className="aboutus-title">About Us</h2> */}
         </div>
 
         <div className="aboutus-info-section">

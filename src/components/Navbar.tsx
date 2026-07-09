@@ -531,6 +531,14 @@ export default function Navbar() {
             Home
           </Link>
 
+          <Link
+            href="/aboutus"
+            className={`nav-link ${pathname?.startsWith('/aboutus') ? 'active' : ''}`}
+            onClick={closeAllMenus}
+          >
+            About Us
+          </Link>
+
           <div
             className={`nav-dropdown ${partnersOpen ? 'open' : ''}`}
             onMouseEnter={openPartners}

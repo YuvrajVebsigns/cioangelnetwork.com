@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'CIO Powerlist-mea',
+  title: 'CIO POWERLIST-MEA',
   // description: 'Core Media Administration Dashboard — Manage users, media, and system settings.',
   keywords: ['admin', 'dashboard', 'core media', 'management'],
   robots: 'noindex, nofollow',

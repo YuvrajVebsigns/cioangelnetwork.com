@@ -12,9 +12,12 @@
 //   const [events, setEvents] = useState<EventItem[]>([]);
 //   const [name, setName] = useState('');
 //   const [email, setEmail] = useState('');
-//   const [country, setCountry] = useState<Country>('IN');
-//   const [phone, setPhone] = useState('');
-//   const [organization, setOrganization] = useState('');
+//   const [countryCode, setCountryCode] = useState<Country>('IN');
+//   const [contactNumber, setContactNumber] = useState('');
+//   const [companyName, setCompanyName] = useState('');
+//   const [jobTitle, setJobTitle] = useState('');
+//   const [region, setRegion] = useState('');
+//   const [country, setCountry] = useState('');
 //   const [selectedEvent, setSelectedEvent] = useState<string | ''>('');
 //   const [popupMessage, setPopupMessage] = useState<string | null>(null);
 //   const [loading, setLoading] = useState(false);
@@ -23,8 +26,11 @@
 //     name?: string;
 //     email?: string;
 //     countryCode?: string;
-//     phone?: string;
-//     organization?: string;
+//     contactNumber?: string;
+//     companyName?: string;
+//     jobTitle?: string;
+//     region?: string;
+//     country?: string;
 //     selectedEvent?: string;
 //   }>({});
 
@@ -48,39 +54,26 @@
 //     e.preventDefault();
 
 //     const nextErrors: typeof errors = {};
+//     const dialCode = getDialCodeFromCountry(countryCode);
 
-//     if (!name.trim()) {
-//       nextErrors.name = 'Name is required.';
-//     } else if (!/^[A-Za-z\s]+$/.test(name)) {
-//       nextErrors.name = 'Only alphabets are allowed.';
+//     if (!name.trim()) nextErrors.name = 'Name is required.';
+//     else if (!/^[A-Za-z\s]+$/.test(name)) nextErrors.name = 'Only alphabets are allowed.';
+
+//     if (!email.trim()) nextErrors.email = 'Email is required.';
+//     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = 'Enter a valid email.';
+
+//     if (!countryCode || !dialCode) nextErrors.countryCode = 'Please select a country code.';
+
+//     if (!contactNumber.trim()) nextErrors.contactNumber = 'Contact number is required.';
+//     else if (!/^\d{10}$/.test(contactNumber.trim())) {
+//       nextErrors.contactNumber = 'Contact number must be exactly 10 digits.';
 //     }
 
-//     if (!email.trim()) {
-//       nextErrors.email = 'Email is required.';
-//     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-//       nextErrors.email = 'Enter a valid email.';
-//     }
-
-//     const dialCode = getDialCodeFromCountry(country);
-//     if (!country || !dialCode) {
-//       nextErrors.countryCode = 'Please select a country code.';
-//     }
-
-//     const trimmedPhone = phone.trim();
-
-//     if (!trimmedPhone) {
-//       nextErrors.phone = 'Phone number is required.';
-//     } else if (!/^\d{10}$/.test(trimmedPhone)) {
-//       nextErrors.phone = 'Phone number must be exactly 10 digits.';
-//     }
-
-//     if (!organization.trim()) {
-//       nextErrors.organization = 'Organization is required.';
-//     }
-
-//     if (!selectedEvent) {
-//       nextErrors.selectedEvent = 'Please select an event.';
-//     }
+//     if (!companyName.trim()) nextErrors.companyName = 'Company name is required.';
+//     if (!jobTitle.trim()) nextErrors.jobTitle = 'Job title is required.';
+//     if (!region.trim()) nextErrors.region = 'Region is required.';
+//     if (!country.trim()) nextErrors.country = 'Country is required.';
+//     if (!selectedEvent) nextErrors.selectedEvent = 'Please select an event.';
 
 //     setErrors(nextErrors);
 
@@ -94,12 +87,12 @@
 
 //     try {
 //       const response = await submitAttendeeRegistration({
-//         eventId: selectedEvent as string,
+//         eventId: selectedEvent,
 //         name: name.trim(),
 //         email: email.trim(),
-//         phoneNumber: phone.trim(),
-//         countryCode: getDialCodeFromCountry(country),
-//         organization: organization.trim(),
+//         phoneNumber: contactNumber.trim(),
+//         countryCode: dialCode,
+//         organization: companyName.trim(),
 //       });
 
 //       const apiMessage =
@@ -111,9 +104,12 @@
 
 //       setName('');
 //       setEmail('');
-//       setCountry('IN');
-//       setPhone('');
-//       setOrganization('');
+//       setCountryCode('IN');
+//       setContactNumber('');
+//       setCompanyName('');
+//       setJobTitle('');
+//       setRegion('');
+//       setCountry('');
 //       setSelectedEvent('');
 //       setErrors({});
 //     } catch (err) {
@@ -150,20 +146,12 @@
 //                 type="text"
 //                 placeholder="Full name"
 //                 value={name}
-//                 pattern="^[A-Za-z\s]+$"
-//                 title="Only alphabets are allowed"
 //                 onInput={(e) => {
 //                   e.currentTarget.value = e.currentTarget.value.replace(/[^A-Za-z\s]/g, '');
 //                 }}
 //                 onChange={(e) => {
 //                   setName(e.target.value);
-
-//                   if (errors.name) {
-//                     setErrors({
-//                       ...errors,
-//                       name: undefined,
-//                     });
-//                   }
+//                   if (errors.name) setErrors({ ...errors, name: undefined });
 //                 }}
 //               />
 //               {errors.name && <div className="registration-error">{errors.name}</div>}
@@ -175,17 +163,9 @@
 //                 type="email"
 //                 placeholder="your@company.com"
 //                 value={email}
-//                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-//                 title="Enter a valid email address"
 //                 onChange={(e) => {
 //                   setEmail(e.target.value);
-
-//                   if (errors.email) {
-//                     setErrors({
-//                       ...errors,
-//                       email: undefined,
-//                     });
-//                   }
+//                   if (errors.email) setErrors({ ...errors, email: undefined });
 //                 }}
 //               />
 //               {errors.email && <div className="registration-error">{errors.email}</div>}
@@ -195,71 +175,91 @@
 //               Country Code*
 //               <CountryCodeSelect
 //                 id="registration-country-code"
-//                 value={country}
+//                 value={countryCode}
 //                 disabled={loading}
 //                 onChange={(nextCountry) => {
-//                   setCountry(nextCountry ?? 'IN');
-
-//                   if (errors.countryCode) {
-//                     setErrors({
-//                       ...errors,
-//                       countryCode: undefined,
-//                     });
-//                   }
+//                   setCountryCode(nextCountry ?? 'IN');
+//                   if (errors.countryCode) setErrors({ ...errors, countryCode: undefined });
 //                 }}
 //               />
 //               {errors.countryCode && <div className="registration-error">{errors.countryCode}</div>}
 //             </label>
 
 //             <label className="registration-label">
-//               Phone Number*
+//               Contact Number*
 //               <input
 //                 type="tel"
-//                 name="phoneNumber"
 //                 placeholder="9876543210"
-//                 value={phone}
+//                 value={contactNumber}
 //                 inputMode="numeric"
 //                 maxLength={10}
-//                 pattern="[0-9]{10}"
-//                 title="Enter exactly 10 digit phone number"
 //                 onInput={(e) => {
 //                   e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '').slice(0, 10);
 //                 }}
 //                 onChange={(e) => {
-//                   setPhone(e.target.value);
-
-//                   if (errors.phone) {
-//                     setErrors({
-//                       ...errors,
-//                       phone: undefined,
-//                     });
-//                   }
+//                   setContactNumber(e.target.value);
+//                   if (errors.contactNumber) setErrors({ ...errors, contactNumber: undefined });
 //                 }}
 //               />
-//               {errors.phone && <div className="registration-error">{errors.phone}</div>}
+//               {errors.contactNumber && (
+//                 <div className="registration-error">{errors.contactNumber}</div>
+//               )}
 //             </label>
 
 //             <label className="registration-label">
-//               Organization*
+//               Company Name*
 //               <input
 //                 type="text"
 //                 placeholder="Company name"
-//                 value={organization}
-//                 required
+//                 value={companyName}
 //                 onChange={(e) => {
-//                   setOrganization(e.target.value);
-
-//                   if (errors.organization) {
-//                     setErrors({
-//                       ...errors,
-//                       organization: undefined,
-//                     });
-//                   }
+//                   setCompanyName(e.target.value);
+//                   if (errors.companyName) setErrors({ ...errors, companyName: undefined });
 //                 }}
 //               />
-//               {errors.organization && (
-//                 <div className="registration-error">{errors.organization}</div>
-//               )}
+//               {errors.companyName && <div className="registration-error">{errors.companyName}</div>}
+//             </label>
+
+//             <label className="registration-label">
+//               Job Title*
+//               <input
+//                 type="text"
+//                 placeholder="Job title"
+//                 value={jobTitle}
+//                 onChange={(e) => {
+//                   setJobTitle(e.target.value);
+//                   if (errors.jobTitle) setErrors({ ...errors, jobTitle: undefined });
+//                 }}
+//               />
+//               {errors.jobTitle && <div className="registration-error">{errors.jobTitle}</div>}
+//             </label>
+
+//             <label className="registration-label">
+//               Region*
+//               <input
+//                 type="text"
+//                 placeholder="Region"
+//                 value={region}
+//                 onChange={(e) => {
+//                   setRegion(e.target.value);
+//                   if (errors.region) setErrors({ ...errors, region: undefined });
+//                 }}
+//               />
+//               {errors.region && <div className="registration-error">{errors.region}</div>}
+//             </label>
+
+//             <label className="registration-label">
+//               Country*
+//               <input
+//                 type="text"
+//                 placeholder="Country"
+//                 value={country}
+//                 onChange={(e) => {
+//                   setCountry(e.target.value);
+//                   if (errors.country) setErrors({ ...errors, country: undefined });
+//                 }}
+//               />
+//               {errors.country && <div className="registration-error">{errors.country}</div>}
 //             </label>
 
 //             <label className="registration-label">
@@ -268,17 +268,10 @@
 //                 value={selectedEvent}
 //                 onChange={(e) => {
 //                   setSelectedEvent(e.target.value || '');
-
-//                   if (errors.selectedEvent) {
-//                     setErrors({
-//                       ...errors,
-//                       selectedEvent: undefined,
-//                     });
-//                   }
+//                   if (errors.selectedEvent) setErrors({ ...errors, selectedEvent: undefined });
 //                 }}
 //               >
 //                 <option value="">-- Select an event --</option>
-
 //                 {events.map((ev) => (
 //                   <option key={ev.id} value={ev.id}>
 //                     {ev.title}
@@ -296,18 +289,14 @@
 //                 className="registration-btn"
 //                 disabled={
 //                   loading ||
-//                   !!errors.name ||
-//                   !!errors.email ||
-//                   !!errors.countryCode ||
-//                   !!errors.phone ||
-//                   !!errors.organization ||
-//                   !!errors.selectedEvent ||
-//                   !name ||
-//                   !email ||
-//                   !country ||
-//                   !getDialCodeFromCountry(country) ||
-//                   phone.length !== 10 ||
-//                   !organization.trim() ||
+//                   !name.trim() ||
+//                   !email.trim() ||
+//                   !getDialCodeFromCountry(countryCode) ||
+//                   contactNumber.length !== 10 ||
+//                   !companyName.trim() ||
+//                   !jobTitle.trim() ||
+//                   !region.trim() ||
+//                   !country.trim() ||
 //                   !selectedEvent
 //                 }
 //               >
@@ -335,12 +324,9 @@ export default function RegisterPage() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [countryCode, setCountryCode] = useState<Country>('IN');
-  const [contactNumber, setContactNumber] = useState('');
-  const [companyName, setCompanyName] = useState('');
-  const [jobTitle, setJobTitle] = useState('');
-  const [region, setRegion] = useState('');
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState<Country>('IN');
+  const [phone, setPhone] = useState('');
+  const [organization, setOrganization] = useState('');
   const [selectedEvent, setSelectedEvent] = useState<string | ''>('');
   const [popupMessage, setPopupMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -349,11 +335,8 @@ export default function RegisterPage() {
     name?: string;
     email?: string;
     countryCode?: string;
-    contactNumber?: string;
-    companyName?: string;
-    jobTitle?: string;
-    region?: string;
-    country?: string;
+    phone?: string;
+    organization?: string;
     selectedEvent?: string;
   }>({});
 
@@ -377,26 +360,39 @@ export default function RegisterPage() {
     e.preventDefault();
 
     const nextErrors: typeof errors = {};
-    const dialCode = getDialCodeFromCountry(countryCode);
 
-    if (!name.trim()) nextErrors.name = 'Name is required.';
-    else if (!/^[A-Za-z\s]+$/.test(name)) nextErrors.name = 'Only alphabets are allowed.';
-
-    if (!email.trim()) nextErrors.email = 'Email is required.';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = 'Enter a valid email.';
-
-    if (!countryCode || !dialCode) nextErrors.countryCode = 'Please select a country code.';
-
-    if (!contactNumber.trim()) nextErrors.contactNumber = 'Contact number is required.';
-    else if (!/^\d{10}$/.test(contactNumber.trim())) {
-      nextErrors.contactNumber = 'Contact number must be exactly 10 digits.';
+    if (!name.trim()) {
+      nextErrors.name = 'Name is required.';
+    } else if (!/^[A-Za-z\s]+$/.test(name)) {
+      nextErrors.name = 'Only alphabets are allowed.';
     }
 
-    if (!companyName.trim()) nextErrors.companyName = 'Company name is required.';
-    if (!jobTitle.trim()) nextErrors.jobTitle = 'Job title is required.';
-    if (!region.trim()) nextErrors.region = 'Region is required.';
-    if (!country.trim()) nextErrors.country = 'Country is required.';
-    if (!selectedEvent) nextErrors.selectedEvent = 'Please select an event.';
+    if (!email.trim()) {
+      nextErrors.email = 'Email is required.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      nextErrors.email = 'Enter a valid email.';
+    }
+
+    const dialCode = getDialCodeFromCountry(country);
+    if (!country || !dialCode) {
+      nextErrors.countryCode = 'Please select a country code.';
+    }
+
+    const trimmedPhone = phone.trim();
+
+    if (!trimmedPhone) {
+      nextErrors.phone = 'Phone number is required.';
+    } else if (!/^\d{10}$/.test(trimmedPhone)) {
+      nextErrors.phone = 'Phone number must be exactly 10 digits.';
+    }
+
+    if (!organization.trim()) {
+      nextErrors.organization = 'Organization is required.';
+    }
+
+    if (!selectedEvent) {
+      nextErrors.selectedEvent = 'Please select an event.';
+    }
 
     setErrors(nextErrors);
 
@@ -410,12 +406,12 @@ export default function RegisterPage() {
 
     try {
       const response = await submitAttendeeRegistration({
-        eventId: selectedEvent,
+        eventId: selectedEvent as string,
         name: name.trim(),
         email: email.trim(),
-        phoneNumber: contactNumber.trim(),
-        countryCode: dialCode,
-        organization: companyName.trim(),
+        phoneNumber: phone.trim(),
+        countryCode: getDialCodeFromCountry(country),
+        organization: organization.trim(),
       });
 
       const apiMessage =
@@ -427,12 +423,9 @@ export default function RegisterPage() {
 
       setName('');
       setEmail('');
-      setCountryCode('IN');
-      setContactNumber('');
-      setCompanyName('');
-      setJobTitle('');
-      setRegion('');
-      setCountry('');
+      setCountry('IN');
+      setPhone('');
+      setOrganization('');
       setSelectedEvent('');
       setErrors({});
     } catch (err) {
@@ -469,12 +462,20 @@ export default function RegisterPage() {
                 type="text"
                 placeholder="Full name"
                 value={name}
+                pattern="^[A-Za-z\s]+$"
+                title="Only alphabets are allowed"
                 onInput={(e) => {
                   e.currentTarget.value = e.currentTarget.value.replace(/[^A-Za-z\s]/g, '');
                 }}
                 onChange={(e) => {
                   setName(e.target.value);
-                  if (errors.name) setErrors({ ...errors, name: undefined });
+
+                  if (errors.name) {
+                    setErrors({
+                      ...errors,
+                      name: undefined,
+                    });
+                  }
                 }}
               />
               {errors.name && <div className="registration-error">{errors.name}</div>}
@@ -486,9 +487,17 @@ export default function RegisterPage() {
                 type="email"
                 placeholder="your@company.com"
                 value={email}
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Enter a valid email address"
                 onChange={(e) => {
                   setEmail(e.target.value);
-                  if (errors.email) setErrors({ ...errors, email: undefined });
+
+                  if (errors.email) {
+                    setErrors({
+                      ...errors,
+                      email: undefined,
+                    });
+                  }
                 }}
               />
               {errors.email && <div className="registration-error">{errors.email}</div>}
@@ -498,91 +507,71 @@ export default function RegisterPage() {
               Country Code*
               <CountryCodeSelect
                 id="registration-country-code"
-                value={countryCode}
+                value={country}
                 disabled={loading}
                 onChange={(nextCountry) => {
-                  setCountryCode(nextCountry ?? 'IN');
-                  if (errors.countryCode) setErrors({ ...errors, countryCode: undefined });
+                  setCountry(nextCountry ?? 'IN');
+
+                  if (errors.countryCode) {
+                    setErrors({
+                      ...errors,
+                      countryCode: undefined,
+                    });
+                  }
                 }}
               />
               {errors.countryCode && <div className="registration-error">{errors.countryCode}</div>}
             </label>
 
             <label className="registration-label">
-              Contact Number*
+              Phone Number*
               <input
                 type="tel"
+                name="phoneNumber"
                 placeholder="9876543210"
-                value={contactNumber}
+                value={phone}
                 inputMode="numeric"
                 maxLength={10}
+                pattern="[0-9]{10}"
+                title="Enter exactly 10 digit phone number"
                 onInput={(e) => {
                   e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '').slice(0, 10);
                 }}
                 onChange={(e) => {
-                  setContactNumber(e.target.value);
-                  if (errors.contactNumber) setErrors({ ...errors, contactNumber: undefined });
+                  setPhone(e.target.value);
+
+                  if (errors.phone) {
+                    setErrors({
+                      ...errors,
+                      phone: undefined,
+                    });
+                  }
                 }}
               />
-              {errors.contactNumber && (
-                <div className="registration-error">{errors.contactNumber}</div>
-              )}
+              {errors.phone && <div className="registration-error">{errors.phone}</div>}
             </label>
 
             <label className="registration-label">
-              Company Name*
+              Organization*
               <input
                 type="text"
                 placeholder="Company name"
-                value={companyName}
+                value={organization}
+                required
                 onChange={(e) => {
-                  setCompanyName(e.target.value);
-                  if (errors.companyName) setErrors({ ...errors, companyName: undefined });
-                }}
-              />
-              {errors.companyName && <div className="registration-error">{errors.companyName}</div>}
-            </label>
+                  setOrganization(e.target.value);
 
-            <label className="registration-label">
-              Job Title*
-              <input
-                type="text"
-                placeholder="Job title"
-                value={jobTitle}
-                onChange={(e) => {
-                  setJobTitle(e.target.value);
-                  if (errors.jobTitle) setErrors({ ...errors, jobTitle: undefined });
+                  if (errors.organization) {
+                    setErrors({
+                      ...errors,
+                      organization: undefined,
+                    });
+                  }
                 }}
               />
-              {errors.jobTitle && <div className="registration-error">{errors.jobTitle}</div>}
-            </label>
-
-            <label className="registration-label">
-              Region*
-              <input
-                type="text"
-                placeholder="Region"
-                value={region}
-                onChange={(e) => {
-                  setRegion(e.target.value);
-                  if (errors.region) setErrors({ ...errors, region: undefined });
-                }}
-              />
-              {errors.region && <div className="registration-error">{errors.region}</div>}
-            </label>
-
-            <label className="registration-label">
-              Country*
-              <input
-                type="text"
-                placeholder="Country"
-                value={country}
-                onChange={(e) => {
-                  setCountry(e.target.value);
-                  if (errors.country) setErrors({ ...errors, country: undefined });
-                }}
-              />
-              {errors.country && <div className="registration-error">{errors.country}</div>}
+              {errors.organization && (
+                <div className="registration-error">{errors.organization}</div>
+              )}
             </label>
 
             <label className="registration-label">
@@ -591,10 +580,17 @@ export default function RegisterPage() {
                 value={selectedEvent}
                 onChange={(e) => {
                   setSelectedEvent(e.target.value || '');
-                  if (errors.selectedEvent) setErrors({ ...errors, selectedEvent: undefined });
+
+                  if (errors.selectedEvent) {
+                    setErrors({
+                      ...errors,
+                      selectedEvent: undefined,
+                    });
+                  }
                 }}
               >
                 <option value="">-- Select an event --</option>
+
                 {events.map((ev) => (
                   <option key={ev.id} value={ev.id}>
                     {ev.title}
@@ -612,14 +608,18 @@ export default function RegisterPage() {
                 className="registration-btn"
                 disabled={
                   loading ||
-                  !name.trim() ||
-                  !email.trim() ||
-                  !getDialCodeFromCountry(countryCode) ||
-                  contactNumber.length !== 10 ||
-                  !companyName.trim() ||
-                  !jobTitle.trim() ||
-                  !region.trim() ||
-                  !country.trim() ||
+                  !!errors.name ||
+                  !!errors.email ||
+                  !!errors.countryCode ||
+                  !!errors.phone ||
+                  !!errors.organization ||
+                  !!errors.selectedEvent ||
+                  !name ||
+                  !email ||
+                  !country ||
+                  !getDialCodeFromCountry(country) ||
+                  phone.length !== 10 ||
+                  !organization.trim() ||
                   !selectedEvent
                 }
               >

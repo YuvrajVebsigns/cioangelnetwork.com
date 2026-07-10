@@ -2,46 +2,46 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-// import { ArrowUpRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useEffect, useState } from 'react';
 import { fetchWebsiteEvents, WebsiteEvent } from '@/services/events.service';
 
-function getStoredWebsiteId(): string | undefined {
-  if (typeof window === 'undefined') return undefined;
+function getSafeImageSrc(item: WebsiteEvent): string {
+  const image =
+    typeof item.image === 'string' && item.image.trim()
+      ? item.image
+      : typeof item.heroImage === 'string' && item.heroImage.trim()
+        ? item.heroImage
+        : typeof item.banner === 'string' && item.banner.trim()
+          ? item.banner
+          : '';
 
-  try {
-    const raw = window.localStorage.getItem('websiteAuth');
-    if (!raw) return undefined;
-
-    const parsed: unknown = JSON.parse(raw);
-    if (typeof parsed === 'object' && parsed !== null && 'websiteId' in parsed) {
-      const websiteId = (parsed as { websiteId?: unknown }).websiteId;
-      return typeof websiteId === 'string' ? websiteId : undefined;
-    }
-  } catch {
-    return undefined;
-  }
-
-  return undefined;
+  return image || '/assets/blogs/blog-1.webp';
 }
-
-// type EventItem = {
-//   category: string;
-//   title: string;
-//   image: string;
-// };
 
 export default function EventsPage() {
   const [events, setEvents] = useState<WebsiteEvent[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchWebsiteEvents(getStoredWebsiteId())
-      .then((data) => {
-        if (Array.isArray(data) && data.length) setEvents(data);
-        else setEvents([]);
-      })
-      .catch(() => setEvents([]));
+    let isMounted = true;
+
+    async function loadEvents() {
+      setIsLoading(true);
+
+      const data = await fetchWebsiteEvents();
+
+      if (isMounted) {
+        setEvents(Array.isArray(data) ? data : []);
+        setIsLoading(false);
+      }
+    }
+
+    loadEvents();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const heroMediaRef = useScrollAnimation<HTMLDivElement>({
@@ -81,11 +81,12 @@ export default function EventsPage() {
             alt="Events"
             fill
             priority
+            sizes="100vw"
             className="blog-hero-image"
           />
         </div>
 
-        <div className="blog-hero-overlay"></div>
+        <div className="blog-hero-overlay" />
 
         <div className="blog-hero-content" ref={heroContentRef}>
           <h1>Event Calendar</h1>
@@ -104,50 +105,42 @@ export default function EventsPage() {
 
       <section className="project-section">
         <div className="project-container">
-          {/* <div className="project-heading">
-            <h2 className="project-title">
-              Our Work <span>Highlights.</span>
-            </h2>
-          </div> */}
-
-          {/* <div className="project-top-bar">
-            <h6 className="project-subtitle">⬢ Custom Event Platforms</h6>
-
-            <Link href="/events" className="talk-btn">
-              <span>More Events</span>
-
-              <div className="talk-btn-icon">
-                <ArrowUpRight size={18} />
-              </div>
-            </Link>
-          </div> */}
-
-          <div className="project-grid">
-            {events === null ? (
-              <div className="events-loading">Loading events…</div>
-            ) : events.length === 0 ? (
-              <div className="events-empty">No events available at the moment.</div>
-            ) : (
-              events.map((item: WebsiteEvent, index: number) => {
+          {isLoading ? (
+            <div className="events-loading" style={{ padding: '60px 20px', textAlign: 'center' }}>
+              Loading events…
+            </div>
+          ) : events && events.length > 0 ? (
+            <div className="project-grid">
+              {events.map((item: WebsiteEvent, index: number) => {
                 const title = String(item.title ?? item.name ?? item.eventName ?? 'Event');
                 const slug =
                   item.id && typeof item.id === 'string'
-                    ? String(item.id)
+                    ? item.id
                     : title
                         .toLowerCase()
                         .replace(/\s+/g, '-')
                         .replace(/[^a-z0-9-]/g, '');
 
-                const imageSrc = String(
-                  item.image ?? item.heroImage ?? item.banner ?? '/assets/blogs/blog-1.webp',
-                );
-                const category = String(item.category ?? 'Events');
+                const imageSrc = getSafeImageSrc(item);
+                const category =
+                  typeof item.category === 'string' && item.category.trim()
+                    ? item.category
+                    : 'Events';
+
+                const ref = index % 2 === 0 ? leftRef : rightRef;
 
                 return (
                   <Link key={slug} href={`/events/${slug}`}>
-                    <div className="project-card" ref={index === 0 ? leftRef : rightRef}>
+                    <div className="project-card" ref={ref}>
                       <div className="project-image-wrap">
-                        <Image src={imageSrc} alt={title} fill className="project-image" />
+                        <Image
+                          src={imageSrc}
+                          alt={title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="project-image"
+                          unoptimized
+                        />
                       </div>
 
                       <div className="project-overlay">
@@ -160,30 +153,15 @@ export default function EventsPage() {
                     </div>
                   </Link>
                 );
-              })
-            )}
-          </div>
+              })}
+            </div>
+          ) : (
+            <div className="events-empty" style={{ padding: '60px 20px', textAlign: 'center' }}>
+              No events available at the moment.
+            </div>
+          )}
         </div>
       </section>
-
-      {/* Duplicate the two events below (downside) with animations */}
-      {/* <section className="project-section">
-        <div className="project-container">
-          <div className="project-top-bar">
-            <h6 className="project-subtitle">⬢ More Events</h6>
-          </div>
-
-          <div className="project-grid">
-            {Array.from({ length: 2 }, () => customEvents)
-              .flat()
-              .map((item, index) => {
-                const variant = index % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right';
-
-                return <AnimatedEventCard key={`${item.title}-dup-${index}`} item={item} index={index} variant={variant} />;
-              })}
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }

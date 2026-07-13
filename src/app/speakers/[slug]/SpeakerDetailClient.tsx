@@ -180,7 +180,7 @@ export default function SpeakerDetailClient({ slug }: SpeakerDetailClientProps) 
                         src={
                           typeof entry.avatar === 'string' && entry.avatar
                             ? entry.avatar
-                            : '/assets/default-winner.png'
+                            : '/assets/speaker/speaker.webp'
                         }
                         alt={typeof entry.author === 'string' ? entry.author : 'Speaker'}
                         className="winner-profile-image"
@@ -203,7 +203,7 @@ export default function SpeakerDetailClient({ slug }: SpeakerDetailClientProps) 
               })}
             </div>
 
-            <div className="winner-section-header winner-section-header--centered">
+            {/* <div className="winner-section-header winner-section-header--centered">
               <span>{section.speakers.length} members</span>
               <h3>Partner Speakers</h3>
             </div>
@@ -221,7 +221,7 @@ export default function SpeakerDetailClient({ slug }: SpeakerDetailClientProps) 
                         src={
                           typeof entry.avatar === 'string' && entry.avatar
                             ? entry.avatar
-                            : '/assets/default-winner.png'
+                            : '/assets/speaker.webp'
                         }
                         alt={typeof entry.author === 'string' ? entry.author : 'Speaker'}
                         className="winner-profile-image"
@@ -242,7 +242,7 @@ export default function SpeakerDetailClient({ slug }: SpeakerDetailClientProps) 
                   </article>
                 );
               })}
-            </div>
+            </div> */}
           </section>
         ))
       ) : (

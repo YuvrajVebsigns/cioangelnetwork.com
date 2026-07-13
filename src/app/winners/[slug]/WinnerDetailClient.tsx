@@ -258,7 +258,7 @@ function WinnerCard({
           src={
             typeof entry.avatar === 'string' && entry.avatar
               ? entry.avatar
-              : '/assets/default-winner.png'
+              : '/assets/winner/winner.webp'
           }
           alt={typeof entry.author === 'string' ? entry.author : 'Winner'}
           className="winner-profile-image"
@@ -529,7 +529,7 @@ export default function WinnerDetailClient({ slug, kicker }: WinnerDetailClientP
               ))}
             </div>
 
-            <div className="winner-section-header winner-section-header--centered">
+            {/* <div className="winner-section-header winner-section-header--centered">
               <span>{section.testimonials.length} Members</span>
               <h4>BUSINESS ICONS</h4>
             </div>
@@ -543,7 +543,7 @@ export default function WinnerDetailClient({ slug, kicker }: WinnerDetailClientP
                   index={index}
                 />
               ))}
-            </div>
+            </div> */}
           </section>
         ))
       ) : (

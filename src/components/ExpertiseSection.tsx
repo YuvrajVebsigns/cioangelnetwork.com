@@ -11,42 +11,42 @@ export default function AboutUsSection() {
 
   const cards = [
     {
-      icon: '/assets/aboutus/recognized.png',
+      icon: '/assets/aboutus/1.png',
       title: 'Showcase Innovations',
       description: 'Shed light on innovative tech products and services to influential leaders.',
     },
     {
-      icon: '/assets/aboutus/technology2.png',
+      icon: '/assets/aboutus/2.png',
       title: 'Direct Access',
       description: 'Engage with leading CIOs and digital leaders directly',
     },
     {
-      icon: '/assets/aboutus/winner.png',
+      icon: '/assets/aboutus/3.png',
       title: 'Lead Generation',
       description: 'Discover new business opportunities',
     },
     {
-      icon: '/assets/aboutus/leadership.png',
+      icon: '/assets/aboutus/4.png',
       title: 'Networking Opportunities',
       description: 'Connect with peers, clients, and potential customers',
     },
     {
-      icon: '/assets/aboutus/learn.png',
+      icon: '/assets/aboutus/5.png',
       title: 'Insightful Discussions',
       description: 'Gain firsthand insights into CIOs challenges and priorities',
     },
     {
-      icon: '/assets/aboutus/showcase.png',
+      icon: '/assets/aboutus/6.png',
       title: 'Increase Visibility',
       description: 'Boost your company’s profile in the tech ecosystem',
     },
     {
-      icon: '/assets/aboutus/networking.png',
+      icon: '/assets/aboutus/7.png',
       title: 'Collaborate',
       description: 'Explore partnerships with leading organisations',
     },
     {
-      icon: '/assets/aboutus/lead-generation.png',
+      icon: '/assets/aboutus/8.png',
       title: 'Stay Ahead',
       description: 'Monitor market dynamics and emerging trends',
     },

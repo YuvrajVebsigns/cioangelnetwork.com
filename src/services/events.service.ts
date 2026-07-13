@@ -122,6 +122,25 @@ function getApiErrorStatus(error: unknown) {
   return undefined;
 }
 
+function extractItemsFromResponse(res: unknown): unknown[] {
+  if (!isRecord(res)) return Array.isArray(res) ? (res as unknown[]) : [];
+
+  const top =
+    (res as Record<string, unknown>).data ??
+    (res as Record<string, unknown>).items ??
+    (res as Record<string, unknown>).results ??
+    res;
+
+  if (Array.isArray(top)) return top;
+
+  if (isRecord(top)) {
+    const inner = top.data ?? top.items ?? top.results ?? [];
+    return Array.isArray(inner) ? inner : [];
+  }
+
+  return [];
+}
+
 export async function fetchWebsiteEvents(websiteId?: string): Promise<WebsiteEvent[]> {
   const domain = getWebsiteDomain();
   let auth: WebsiteAuth | null = null;
@@ -150,7 +169,7 @@ export async function fetchWebsiteEvents(websiteId?: string): Promise<WebsiteEve
     });
 
     // Normalize response shapes
-    const items = isRecord(res) ? (res.data ?? res.items ?? res.results ?? []) : (res ?? []);
+    const items = extractItemsFromResponse(res);
 
     if (!Array.isArray(items)) return [];
 
@@ -188,7 +207,7 @@ export async function fetchWebsiteEvents(websiteId?: string): Promise<WebsiteEve
           },
         );
 
-        const items = isRecord(res) ? (res.data ?? res.items ?? res.results ?? []) : (res ?? []);
+        const items = extractItemsFromResponse(res);
         if (!Array.isArray(items)) return [];
 
         return (items as RawEvent[]).map((it) => ({

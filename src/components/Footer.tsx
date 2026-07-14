@@ -16,7 +16,7 @@ export default function Footer() {
             {/* <div className="footer-widget footer-brand"> */}
             <Link href="/" className="footer-logo">
               <Image
-                src="/assets/logo/logo2.png"
+                src="/assets/logo/CAN-logo-rg.png"
                 alt="CORE Media"
                 width={100}
                 height={50}

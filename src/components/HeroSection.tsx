@@ -1,88 +1,54 @@
-// 'use client';
-
-// import Image from 'next/image';
-// import { ArrowDown } from 'lucide-react';
-
-// export default function HeroSection() {
-//   const handleScroll = () => {
-//     window.scrollBy({
-//       top: window.innerHeight,
-//       behavior: 'smooth',
-//     });
-//   };
-
-//   return (
-//     <section className="hero-section">
-//       <div className="hero-wrapper">
-//         <div className="hero-content">
-//           <div className="hero-badge">
-//             <span className="hero-badge-icon">❋</span>
-//             <span className="hero-badge-text">ARCHITECTING THE FUTURE</span>
-//           </div>
-
-//           <h1 className="hero-title">Innovating measurable ways to connect with prospects.</h1>
-
-//           <div className="hero-bottom">
-//             <div className="hero-arrow">
-//               <img src="/assets/home/arrow.png" alt="Arrow" className="hero-arrow-img" />
-//             </div>
-
-//             <p className="hero-description">
-//               Represents growth, expansion, and modern business solution present growth, present
-//               growth, expansion.
-//             </p>
-//           </div>
-
-//           <button onClick={handleScroll} className="hero-scroll" aria-label="Scroll down">
-//             <span className="font-semibold">Scroll Down</span>
-//             <div className="hero-scroll-icon">
-//               <ArrowDown size={18} />
-//             </div>
-//           </button>
-//         </div>
-
-//         <div className="hero-image-area">
-//           <Image
-//             src="/assets/hero.png"
-//             alt="Business Man"
-//             width={800}
-//             height={1500}
-//             priority
-//             className="hero-image"
-//           />
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 'use client';
 
-import { useEffect, useState } from 'react';
-
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+const heroSlides = [
+  {
+    image: '/assets/home/img3.jpg',
+    title: 'Hey',
+    subtitle: 'Empowering Startups with Smart Investments',
+  },
+];
 
 export default function HeroSection() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    setShow(true);
-  }, []);
-
   return (
     <section className="hero-section">
-      {show && (
-        <div className="hero-image-only animate__animated animate__jackInTheBox">
-          <Image
-            src="/assets/heropowerlist.webp"
-            alt="Hero Banner"
-            width={1920}
-            height={800}
-            priority
-            className="hero-image"
-          />
-        </div>
-      )}
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        slidesPerView={1}
+        loop
+        speed={900}
+        autoplay={false}
+        pagination={{ clickable: true }}
+        className="hero-swiper"
+      >
+        {heroSlides.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <div className="hero-slide">
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                priority={index === 0}
+                className="hero-image"
+              />
+
+              <div className="hero-overlay"></div>
+
+              <div className="hero-content">
+                <h1>{slide.title}</h1>
+                <p>{slide.subtitle}</p>
+                <button>Explore More</button>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
 }

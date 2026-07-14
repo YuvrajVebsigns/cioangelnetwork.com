@@ -1,5 +1,6 @@
 import HeroSection from '@/components/HeroSection';
 import FoundersMessage from '@/components/FoundersMessage';
+import InvestmentSection from '@/components/Investers';
 import ExpertiseSection from '@/components/ExpertiseSection';
 // import KeyClient from '@/components/KeyClient';
 import ProjectsSection from '@/components/ProjectsSection';
@@ -15,6 +16,7 @@ export default function Home() {
       {/* <div className="max-w-[1480px] mx-auto"> */}
       <HeroSection />
       <FoundersMessage />
+      <InvestmentSection />
       <ExpertiseSection />
       {/* <TeamSection /> */}
       {/* <KeyClient /> */}

@@ -9,9 +9,9 @@ import 'swiper/css/pagination';
 
 const heroSlides = [
   {
-    image: '/assets/home/img3.jpg',
-    title: 'Hey',
-    subtitle: 'Empowering Startups with Smart Investments',
+    image: '/assets/home/hero.png',
+    title: '',
+    subtitle: '',
   },
 ];
 
@@ -43,7 +43,7 @@ export default function HeroSection() {
               <div className="hero-content">
                 <h1>{slide.title}</h1>
                 <p>{slide.subtitle}</p>
-                <button>Explore More</button>
+                {/* <button>Explore More</button> */}
               </div>
             </div>
           </SwiperSlide>

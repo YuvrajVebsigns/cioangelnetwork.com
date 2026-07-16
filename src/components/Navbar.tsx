@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/aboutus' },
   { label: 'Startup Valuations', href: '/startup-valuations' },
   { label: 'Survival of the Richest', href: '/survival-of-the-richest' },
@@ -14,7 +15,7 @@ const navLinks = [
   { label: 'President Message', href: '/president-message' },
   { label: 'Membership', href: '/membership' },
   { label: 'Start-up Application', href: '/start-up-application' },
-  { label: 'Contact', href: '/#contact-section' },
+  // { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {

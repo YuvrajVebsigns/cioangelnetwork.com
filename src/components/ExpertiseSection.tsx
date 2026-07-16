@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { ArrowUpRight } from 'lucide-react';
 
 const dealStats = [
   {
@@ -55,7 +56,7 @@ export default function AboutUsSection() {
           <div className="deal-heading-row">
             <h2 className="deal-corner-title">Deal Corner</h2>
 
-            <Link href="/portfolio-companies" className="deal-portfolio-link">
+            <Link href="/portfolio" className="deal-portfolio-link">
               See all portfolio companies here
             </Link>
           </div>
@@ -117,11 +118,12 @@ export default function AboutUsSection() {
             can end up with running out of money and lead to premature death of an idea.
           </p>
 
-          <Link href="/about-us" className="deal-learn-more-btn">
-            <span>Learn More</span>
-            <span className="deal-learn-more-arrow" aria-hidden="true">
-              →
-            </span>
+          <Link href="/survival-of-the-richest" className="talk-btn">
+            <span>Learn more</span>
+
+            <div className="talk-btn-icon">
+              <ArrowUpRight size={18} />
+            </div>
           </Link>
         </div>
       </div>

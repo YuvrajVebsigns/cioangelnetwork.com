@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-
+import { ArrowUpRight } from 'lucide-react';
 export default function SurvivalOfTheRichestPage() {
   return (
     <section className="survival-section">
@@ -181,6 +181,27 @@ export default function SurvivalOfTheRichestPage() {
             Success is achieved when passion is backed by the right capital at the right time.
           </div>
         </article>
+        <br />
+
+        {/* BOTTOM CONTENT */}
+
+        <div className="deal-bottom-section">
+          <div className="deal-bottom-container">
+            <p className="deal-bottom-text">
+              Entrepreneur&apos;s passionate desire to succeed is not enough to achieve success; it
+              needs to be coupled with capital. Spending too much or raising very little capital
+              both can end up with running out of money and lead to premature death of an idea.
+            </p>
+
+            <Link href="/survival-of-the-richest" className="talk-btn">
+              <span>Learn more</span>
+
+              <div className="talk-btn-icon">
+                <ArrowUpRight size={18} />
+              </div>
+            </Link>
+          </div>
+        </div>
 
         <div className="learn-btn-wrap">
           <Link href="/" className="learn-btn">

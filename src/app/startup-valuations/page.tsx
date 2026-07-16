@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-
+import { ArrowUpRight } from 'lucide-react';
 export default function StartupValuationsPage() {
   return (
     <main className="startup-valuations-page">
@@ -145,7 +145,7 @@ export default function StartupValuationsPage() {
                 </div>
               </div>
 
-              <Link href="#contact-section" className="valuation-enquiry-btn">
+              <Link href="/contact" className="valuation-enquiry-btn">
                 <span>Send an Enquiry</span>
 
                 <span className="valuation-enquiry-btn-icon" aria-hidden="true">
@@ -161,36 +161,25 @@ export default function StartupValuationsPage() {
         </div>
       </section>
 
-      <section className="startup-contact-section">
-        <div className="startup-contact-content">
-          <span className="startup-contact-label">Connect with CIO Angel Network</span>
+      {/* BOTTOM CONTENT */}
 
-          <h2>
-            Looking for the Right
-            <span> Start-up Valuation?</span>
-          </h2>
-
-          <p>
-            Whether you are preparing for your first angel round or refining your fundraising
-            strategy, our investor community can help you understand valuation, capital
-            requirements, investment readiness and long-term growth planning.
+      <div className="deal-bottom-section">
+        <div className="deal-bottom-container">
+          <p className="deal-bottom-text">
+            Entrepreneur&apos;s passionate desire to succeed is not enough to achieve success; it
+            needs to be coupled with capital. Spending too much or raising very little capital both
+            can end up with running out of money and lead to premature death of an idea.
           </p>
 
-          <div className="startup-contact-actions">
-            <Link href="#contact-section" className="startup-contact-btn">
-              <span>Contact Our Team</span>
+          <Link href="/survival-of-the-richest" className="talk-btn">
+            <span>Learn more</span>
 
-              <span className="startup-contact-arrow" aria-hidden="true">
-                →
-              </span>
-            </Link>
-
-            <Link href="/join" className="startup-secondary-btn">
-              Join CIO Angel Network
-            </Link>
-          </div>
+            <div className="talk-btn-icon">
+              <ArrowUpRight size={18} />
+            </div>
+          </Link>
         </div>
-      </section>
+      </div>
 
       <div className="startup-back">
         <Link href="/" className="startup-back-btn">

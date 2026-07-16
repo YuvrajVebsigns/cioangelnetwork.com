@@ -36,11 +36,11 @@ export default function Footer() {
 
               <ul className="footer-links">
                 <li>
-                  <Link href="/register">Registration</Link>
+                  <Link href="/startup-valuations">Startup Valuations</Link>
                 </li>
 
                 <li>
-                  <Link href="/nominate">Nomination</Link>
+                  <Link href="/survival-of-the-richest">Survival of the Richest</Link>
                 </li>
               </ul>
             </div>

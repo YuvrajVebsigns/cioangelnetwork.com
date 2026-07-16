@@ -72,7 +72,7 @@ export default function InvestmentSection() {
               Opportunities with CIO Angels!
             </h2>
 
-            <Link href="/connect" className="connect-btn">
+            <Link href="/contact" className="connect-btn">
               <span>Connect with Investors</span>
             </Link>
           </div>

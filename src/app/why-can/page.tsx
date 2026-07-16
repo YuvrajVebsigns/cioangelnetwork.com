@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function WhyCanPage() {
   return (
@@ -19,104 +20,104 @@ export default function WhyCanPage() {
           </p>
         </div>
 
-        <div className="why-can-card">
-          <h2>Why CAN?</h2>
+        <div className="why-can-content">
+          <div className="why-can-card">
+            <h2>Why CAN?</h2>
 
-          <p>
-            Imagine access to the greatest goldmine of technology professionals designed to give
-            entrepreneurs the tools, relationships, and mentorship required to accomplish ambitious
-            goals. We believe one of the most important success factors for founders is access to
-            high-quality angel investors who contribute far more than capital.
-          </p>
+            <p>
+              Imagine access to the greatest goldmine of technology professionals designed to give
+              entrepreneurs the tools, relationships, and mentorship required to accomplish
+              ambitious goals. We believe one of the most important success factors for founders is
+              access to high-quality angel investors who contribute far more than capital.
+            </p>
 
-          <p>
-            Through CAN&apos;s extensive CXO network, portfolio companies gain specialized knowledge
-            covering technology, enterprise sales, operations, cybersecurity, leadership, product
-            strategy, and business growth.
-          </p>
+            <p>
+              Through CAN&apos;s extensive CXO network, portfolio companies gain specialized
+              knowledge covering technology, enterprise sales, operations, cybersecurity,
+              leadership, product strategy, and business growth.
+            </p>
 
-          <p>
-            As an early-stage technology company, founders work tirelessly to transform ideas into
-            high-growth businesses. However, they cannot build successful companies alone. Whether
-            they require guidance on refining their business model, connecting with enterprise
-            clients, identifying strategic suppliers, or understanding the investment ecosystem, CAN
-            provides the support necessary for sustainable growth.
-          </p>
+            <p>
+              As an early-stage technology company, founders work tirelessly to transform ideas into
+              high-growth businesses. However, they cannot build successful companies alone. Whether
+              they require guidance on refining their business model, connecting with enterprise
+              clients, identifying strategic suppliers, or understanding the investment ecosystem,
+              CAN provides the support necessary for sustainable growth.
+            </p>
 
-          <p>
-            Strong idea velocity comes from continuous mentoring, industry expertise, practical
-            feedback, and strategic relationships. CAN members help entrepreneurs understand the
-            language of scale, sustainable growth, enterprise selling, and investor readiness.
-          </p>
-        </div>
-
-        <div className="feature-grid">
-          <div className="feature-card">
-            <h3>🤝 Mentorship</h3>
-            <p>Guidance from experienced CIOs, CTOs and enterprise leaders.</p>
+            <p>
+              Strong idea velocity comes from continuous mentoring, industry expertise, practical
+              feedback, and strategic relationships. CAN members help entrepreneurs understand the
+              language of scale, sustainable growth, enterprise selling, and investor readiness.
+            </p>
           </div>
 
-          <div className="feature-card">
-            <h3>💰 Smart Capital</h3>
-            <p>Funding supported by strategic mentoring and business experience.</p>
-          </div>
+          <aside className="valuation-enquiry-panel">
+            <div className="valuation-enquiry-heading">
+              <span className="valuation-enquiry-icon" aria-hidden="true">
+                ↗
+              </span>
 
-          <div className="feature-card">
-            <h3>🌐 Enterprise Network</h3>
-            <p>Access to customers, partners, suppliers and industry experts.</p>
-          </div>
-
-          <div className="feature-card">
-            <h3>📈 Scale Faster</h3>
-            <p>Learn how successful companies achieve sustainable growth.</p>
-          </div>
-        </div>
-
-        <div className="cta-card">
-          <h2>Apply for CAN Pitching Opportunity</h2>
-
-          <p>
-            Join CAN and connect with experienced technology leaders who can help transform your
-            startup into a scalable enterprise.
-          </p>
-
-          <Link href="/start-up-application" className="cta-btn">
-            Apply Now
-          </Link>
-        </div>
-
-        <div className="enquiry-card">
-          <h2>Quick Enquiry</h2>
-
-          <form className="enquiry-form">
-            <div className="form-grid">
-              <input type="text" placeholder="Full Name *" />
-
-              <input type="text" placeholder="Company *" />
-
-              <input type="tel" placeholder="Phone *" />
-
-              <input type="email" placeholder="Email *" />
+              <div className="valuation-enquiry-title">
+                <span className="valuation-enquiry-label">Need assistance?</span>
+                <h2>Quick Enquiry</h2>
+              </div>
             </div>
 
-            <textarea rows={6} placeholder="Message *" />
+            <p className="valuation-enquiry-description">
+              Connect with our team to discuss startup valuation, investment readiness, fundraising
+              requirements and growth opportunities.
+            </p>
 
-            <button type="submit">Submit Enquiry</button>
-          </form>
+            <div className="valuation-enquiry-points">
+              <div className="valuation-enquiry-point">
+                <span aria-hidden="true">01</span>
+                <p>Understand your startup&apos;s investment readiness.</p>
+              </div>
+
+              <div className="valuation-enquiry-point">
+                <span aria-hidden="true">02</span>
+                <p>Evaluate realistic capital and equity requirements.</p>
+              </div>
+
+              <div className="valuation-enquiry-point">
+                <span aria-hidden="true">03</span>
+                <p>Connect with the CIO Angel Network community.</p>
+              </div>
+            </div>
+
+            <Link href="/contact" className="valuation-enquiry-btn">
+              <span>Send an Enquiry</span>
+
+              <span className="valuation-enquiry-btn-icon" aria-hidden="true">
+                →
+              </span>
+            </Link>
+
+            <p className="valuation-enquiry-note">
+              You will be redirected to the contact section below.
+            </p>
+          </aside>
         </div>
+      </div>
 
-        <div className="highlight-box">
-          <h2>Entrepreneur Success</h2>
+      <br />
+      {/* BOTTOM CONTENT */}
 
-          <p>
-            Entrepreneur&apos;s passionate desire to succeed is not enough to achieve success—it
-            must be supported by the right capital, mentorship, and strategic guidance. Raising too
-            much or too little funding can both result in failure before reaching product-market
-            fit.
+      <div className="deal-bottom-section">
+        <div className="deal-bottom-container">
+          <p className="deal-bottom-text">
+            Entrepreneur&apos;s passionate desire to succeed is not enough to achieve success; it
+            needs to be coupled with capital. Spending too much or raising very little capital both
+            can end up with running out of money and lead to premature death of an idea.
           </p>
 
-          <Link href="/" className="learn-btn">
-            Learn More →
+          <Link href="/survival-of-the-richest" className="talk-btn">
+            <span>Learn more</span>
+
+            <div className="talk-btn-icon">
+              <ArrowUpRight size={18} />
+            </div>
           </Link>
         </div>
       </div>

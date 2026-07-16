@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function MembershipPage() {
   return (
@@ -10,127 +11,179 @@ export default function MembershipPage() {
           <span className="membership-badge">MEMBERSHIP</span>
 
           <h1>
-            Join the <span>CIO Angel Network</span>
+            CIO Angel Network <span>Membership</span>
           </h1>
+        </div>
 
-          <p>
-            Membership in CIO Angel Network (CAN) is a privilege extended to selected technology
-            leaders, investors and institutions committed towards building the startup ecosystem.
+        <div className="membership-layout">
+          <div className="membership-left">
+            <div className="membership-intro">
+              <p>
+                Membership in <strong>CIO Angel Network (CAN)</strong> is a privilege that is
+                extended on a periodic basis to individual CIO investors (&quot;Members&quot;) and
+                is subject to periodic renewal.
+              </p>
+
+              <p>
+                CAN is the first members-only network in India specifically created to finance
+                early-stage and startup businesses by technology professionals.
+              </p>
+
+              <p>
+                Decisions regarding approval or denial of membership to any applicant shall be
+                governed by the Founding Angels. All decisions are final and are not subject to
+                appeal.
+              </p>
+            </div>
+
+            <div className="membership-grid">
+              <article className="membership-card">
+                <h3>Individual CIO Members</h3>
+
+                <div className="membership-fee">
+                  <span>One Time Registration Fee</span>
+                  <strong>₹25,000</strong>
+                </div>
+
+                <div className="membership-fee">
+                  <span>Annual Fee</span>
+                  <strong>₹25,000</strong>
+                </div>
+              </article>
+
+              <article className="membership-card">
+                <h3>Individual Non CIO Members</h3>
+
+                <div className="membership-fee">
+                  <span>One Time Registration Fee</span>
+                  <strong>₹25,000</strong>
+                </div>
+
+                <div className="membership-fee">
+                  <span>Annual Fee</span>
+                  <strong>₹50,000</strong>
+                </div>
+              </article>
+
+              <article className="membership-card">
+                <h3>Family Offices</h3>
+
+                <div className="membership-fee">
+                  <span>One Time Registration Fee</span>
+                  <strong>₹25,000</strong>
+                </div>
+
+                <div className="membership-fee">
+                  <span>Annual Fee</span>
+                  <strong>₹100,000</strong>
+                </div>
+              </article>
+
+              <article className="membership-card">
+                <h3>Institutional Members</h3>
+
+                <div className="membership-fee">
+                  <span>One Time Registration Fee</span>
+                  <strong>₹25,000</strong>
+                </div>
+
+                <div className="membership-fee">
+                  <span>Annual Fee</span>
+                  <strong>₹300,000</strong>
+                </div>
+              </article>
+            </div>
+
+            <div className="membership-status">
+              <h2>Membership Status</h2>
+
+              <div className="status-grid">
+                <div className="status-card open">
+                  <h3>Mumbai</h3>
+                  <span>Open</span>
+                </div>
+
+                <div className="status-card open">
+                  <h3>Delhi</h3>
+                  <span>Open</span>
+                </div>
+
+                <div className="status-card upcoming">
+                  <h3>Bangalore</h3>
+                  <span>Opening in 2016</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside className="valuation-enquiry-panel">
+            <div className="valuation-enquiry-heading">
+              <span className="valuation-enquiry-icon" aria-hidden="true">
+                ↗
+              </span>
+
+              <div className="valuation-enquiry-title">
+                <span className="valuation-enquiry-label">Need assistance?</span>
+                <h2>Quick Enquiry</h2>
+              </div>
+            </div>
+
+            <p className="valuation-enquiry-description">
+              Connect with our team to discuss CIO Angel Network membership, registration fees,
+              eligibility and membership availability.
+            </p>
+
+            <div className="valuation-enquiry-points">
+              <div className="valuation-enquiry-point">
+                <span aria-hidden="true">01</span>
+                <p>Understand the available membership categories.</p>
+              </div>
+
+              <div className="valuation-enquiry-point">
+                <span aria-hidden="true">02</span>
+                <p>Learn about registration and annual membership fees.</p>
+              </div>
+
+              <div className="valuation-enquiry-point">
+                <span aria-hidden="true">03</span>
+                <p>Check membership availability for your city.</p>
+              </div>
+            </div>
+
+            <Link href="/contact" className="valuation-enquiry-btn">
+              <span>Send an Enquiry</span>
+
+              <span className="valuation-enquiry-btn-icon" aria-hidden="true">
+                →
+              </span>
+            </Link>
+
+            <p className="valuation-enquiry-note">
+              You will be redirected to the contact section below.
+            </p>
+          </aside>
+        </div>
+      </div>
+
+      <br />
+
+      {/* BOTTOM CONTENT */}
+
+      <div className="deal-bottom-section">
+        <div className="deal-bottom-container">
+          <p className="deal-bottom-text">
+            Entrepreneur&apos;s passionate desire to succeed is not enough to achieve success; it
+            needs to be coupled with capital. Spending too much or raising very little capital both
+            can end up with running out of money and lead to premature death of an idea.
           </p>
-        </div>
 
-        <div className="membership-intro">
-          <p>
-            Membership in <strong>CIO Angel Network (CAN)</strong> is granted on a periodic basis
-            and is subject to renewal. CAN is India&apos;s first exclusive members-only angel
-            network created specifically to finance early-stage and technology startups. Membership
-            approvals are solely governed by the Founding Angels, and all decisions are final.
-          </p>
-        </div>
+          <Link href="/survival-of-the-richest" className="talk-btn">
+            <span>Learn more</span>
 
-        <div className="membership-grid">
-          <div className="membership-card">
-            <h3>Individual CIO</h3>
-
-            <div className="price">
-              ₹25,000
-              <span>One Time Registration</span>
+            <div className="talk-btn-icon">
+              <ArrowUpRight size={18} />
             </div>
-
-            <p>Annual Fee</p>
-
-            <h4>₹25,000</h4>
-          </div>
-
-          <div className="membership-card">
-            <h3>Individual Non CIO</h3>
-
-            <div className="price">
-              ₹25,000
-              <span>One Time Registration</span>
-            </div>
-
-            <p>Annual Fee</p>
-
-            <h4>₹50,000</h4>
-          </div>
-
-          <div className="membership-card">
-            <h3>Family Offices</h3>
-
-            <div className="price">
-              ₹25,000
-              <span>One Time Registration</span>
-            </div>
-
-            <p>Annual Fee</p>
-
-            <h4>₹100,000</h4>
-          </div>
-
-          <div className="membership-card">
-            <h3>Institutional</h3>
-
-            <div className="price">
-              ₹25,000
-              <span>One Time Registration</span>
-            </div>
-
-            <p>Annual Fee</p>
-
-            <h4>₹300,000</h4>
-          </div>
-        </div>
-
-        <div className="membership-status">
-          <h2>Membership Status</h2>
-
-          <div className="status-grid">
-            <div className="status-card open">
-              <h3>Mumbai</h3>
-              <span>Open</span>
-            </div>
-
-            <div className="status-card open">
-              <h3>Delhi</h3>
-              <span>Open</span>
-            </div>
-
-            <div className="status-card upcoming">
-              <h3>Bangalore</h3>
-              <span>Opening Soon</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="membership-form">
-          <h2>Quick Enquiry</h2>
-
-          <form>
-            <div className="form-grid">
-              <input type="text" placeholder="Full Name *" />
-
-              <input type="text" placeholder="Company *" />
-
-              <input type="tel" placeholder="Phone *" />
-
-              <input type="email" placeholder="Email *" />
-            </div>
-
-            <textarea rows={6} placeholder="Message *"></textarea>
-
-            <button type="submit">Send Enquiry</button>
-          </form>
-        </div>
-
-        <div className="membership-cta">
-          <p>
-            Entrepreneur&apos;s passionate desire to succeed is not enough to achieve success. It
-            must be supported with the right capital at the right time. Raising too much or too
-            little funding can both become obstacles to long-term growth.
-          </p>
-
-          <Link href="/startup-valuations">Learn More →</Link>
+          </Link>
         </div>
       </div>
     </section>

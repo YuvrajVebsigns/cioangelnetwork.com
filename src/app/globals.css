@@ -1166,10 +1166,6 @@ main {
 }
 
 /* =========================================================
-   NAVBAR
-========================================================= */
-
-/* =========================================================
    NAVBAR - FIXED PREMIUM SINGLE ROW DESIGN
 ========================================================= */
 
@@ -1210,7 +1206,6 @@ main {
 .navbar-container {
   width: 100%;
   min-height: 94px;
-  margin-top: 22px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -1248,7 +1243,7 @@ main {
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  gap: clamp(5px, 0.7vw, 13px);
+  gap: clamp(5px, 0.7vw, 23px);
 }
 
 /* Every label has a light box */
@@ -1296,7 +1291,7 @@ main {
   transition: width 0.25s ease;
 }
 
-/* Hover */
+/* Hover & Active States */
 
 .nav-link:hover {
   color: #8e0101;
@@ -1305,20 +1300,15 @@ main {
   transform: translateY(-2px);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 30px;
 }
-
-/* Current active page */
 
 .nav-link.active {
   color: #8e0101;
   background: #f7eeee;
   border-color: rgba(142, 1, 1, 0.07);
-}
-
-.nav-link.active::after {
-  width: 30px;
 }
 
 /* =========================================================
@@ -1330,18 +1320,19 @@ main {
   flex-shrink: 0;
 }
 
+/* Hit-area bridge prevents losing hover focus across sub-pixel browser zoom rendering */
 .nav-dropdown::after {
   content: '';
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  height: 10px;
+  height: 16px;
 }
 
 .mega-panel {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 8px);
   left: 50%;
   z-index: 1200;
   width: 240px;
@@ -1705,7 +1696,7 @@ main {
     height: 24px;
   }
 
-  /* Mobile dropdown */
+  /* Mobile dropdown expansion fix */
 
   .nav-dropdown {
     width: 100%;
@@ -1740,7 +1731,7 @@ main {
   }
 
   .nav-dropdown.open .mega-panel {
-    max-height: 400px;
+    max-height: none;
     margin-top: 6px;
     padding: 10px;
     opacity: 1;
@@ -1815,6 +1806,7 @@ main {
     padding-left: 18px;
   }
 }
+
 /* ======================================
    HERO
 ====================================== */
@@ -2526,7 +2518,7 @@ main {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 500px minmax(0, 1fr);
-  align-items: center;
+  align-items: start; /* Changed from center */
   gap: 85px;
 }
 
@@ -2535,7 +2527,9 @@ main {
 ========================================================= */
 
 .founder-image-wrapper {
-  position: relative;
+  position: sticky;
+  top: 0px; /* Distance from the top of the viewport */
+  align-self: start;
   min-height: 590px;
   display: flex;
   align-items: center;
@@ -8166,10 +8160,10 @@ main {
 .blog-breadcrumb a,
 .blog-breadcrumb p {
   margin: 1;
-  color: white;
+  color: rgb(240, 235, 235);
   text-decoration: none;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 25px;
+  font-weight: 540;
 }
 
 .blog-breadcrumb-home {

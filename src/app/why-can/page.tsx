@@ -121,6 +121,11 @@ export default function WhyCanPage() {
           </Link>
         </div>
       </div>
+      <div className="president-back">
+        <Link href="/" className="president-btn">
+          ← Back to Home
+        </Link>
+      </div>
     </section>
   );
 }

@@ -1474,7 +1474,7 @@ main {
   border: 1px solid rgba(142, 1, 1, 0.25);
   border-radius: 999px;
   box-shadow: 0 8px 20px rgba(142, 1, 1, 0.2);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
@@ -1840,19 +1840,35 @@ main {
    IMAGE
 =========================== */
 
+/* ===========================
+   IMAGE
+=========================== */
+
 .hero-image-wrapper {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
 }
 
 .hero-image {
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   object-position: center center;
   transform: scale(1);
   transition: transform 7s ease;
+}
+
+/* Automatic zoom on active slide */
+
+.hero-swiper .swiper-slide-active .hero-image {
+  transform: scale(1.02);
 }
 
 /* Automatic zoom on active slide */
@@ -1972,6 +1988,10 @@ main {
    TABLET
 =========================== */
 
+/* ===========================
+   TABLET
+=========================== */
+
 @media (max-width: 992px) {
   .hero-section {
     margin-top: 92px;
@@ -1981,7 +2001,12 @@ main {
   .hero-slide,
   .hero-swiper .swiper-wrapper,
   .hero-swiper .swiper-slide {
-    height: 550px;
+    height: 420px;
+  }
+
+  .hero-image {
+    object-fit: cover;
+    object-position: center;
   }
 
   .hero-content {
@@ -1990,7 +2015,7 @@ main {
   }
 
   .hero-content h1 {
-    font-size: 48px;
+    font-size: 42px;
   }
 
   .hero-content p {
@@ -2011,11 +2036,12 @@ main {
   .hero-slide,
   .hero-swiper .swiper-wrapper,
   .hero-swiper .swiper-slide {
-    height: 420px;
+    height: 250px;
   }
 
   .hero-image {
-    object-position: center center;
+    object-fit: cover;
+    object-position: center;
   }
 
   .hero-content {
@@ -2026,32 +2052,32 @@ main {
   }
 
   .hero-content h1 {
-    margin-bottom: 14px;
-    font-size: 34px;
+    font-size: 30px;
+    margin-bottom: 12px;
   }
 
   .hero-content p {
-    margin-bottom: 25px;
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 1.5;
   }
 
   .hero-content button {
-    padding: 13px 28px;
-    font-size: 15px;
+    padding: 12px 24px;
+    font-size: 14px;
   }
 
   .hero-swiper .swiper-pagination {
-    bottom: 18px !important;
+    bottom: 12px !important;
   }
 
   .hero-swiper .swiper-pagination-bullet {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
   }
 
   .hero-swiper .swiper-pagination-bullet-active {
-    width: 28px;
+    width: 24px;
   }
 }
 
@@ -2068,20 +2094,25 @@ main {
   .hero-slide,
   .hero-swiper .swiper-wrapper,
   .hero-swiper .swiper-slide {
-    height: 360px;
+    height: 180px;
+  }
+
+  .hero-image {
+    object-fit: cover;
+    object-position: center;
   }
 
   .hero-content h1 {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .hero-content p {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .hero-content button {
-    padding: 11px 23px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 13px;
   }
 }
 
@@ -2099,6 +2130,7 @@ main {
     transform: none;
   }
 }
+
 /* =========================================================
    CONTACT SECTION
 ========================================================= */
@@ -5268,33 +5300,34 @@ main {
 /* ACTIONS */
 .blog-detail-actions {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  margin-top: 28px;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .share-container {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-.share-container br {
-  display: none;
+  gap: 14px;
+  /* flex-wrap: wrap; */
 }
 
 .share-popup {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
+
+  /* Remove these if present */
   position: static;
+  width: auto;
+  margin: 0;
+  padding: 0;
   background: transparent;
   box-shadow: none;
-  padding: 0;
-  flex-wrap: wrap;
+}
+
+.share-container br {
+  display: none;
 }
 
 .share-option {
@@ -15396,6 +15429,7 @@ html {
   }
 
   .valuation-enquiry-panel {
+    margin-top: 20px;
     padding: 28px 22px;
     border-radius: 20px;
   }
@@ -16503,6 +16537,7 @@ html {
 
   .valuation-enquiry-panel {
     padding: 28px 22px;
+    magib-bottom: 20px;
   }
 
   .valuation-enquiry-heading h2 {
@@ -16691,7 +16726,7 @@ html {
 
 .startup-email-btn {
   display: inline-block;
-  padding: 16px 36px;
+  padding: 10px 10px;
   color: #8e0101;
   background: #ffffff;
   border-radius: 50px;
@@ -16939,6 +16974,7 @@ html {
 
   .valuation-enquiry-panel {
     padding: 28px 22px;
+    margin-bottom: 20px;
   }
 }
 

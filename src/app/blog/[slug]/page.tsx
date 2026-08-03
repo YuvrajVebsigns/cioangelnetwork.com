@@ -329,7 +329,7 @@ export default function BlogDetailsPage() {
                 animationClass="animate-fade-in"
                 initialTransform="translateY(18px)"
               >
-                <Link href="/blog" className="backbutton">
+                <Link href="/blog" className="talk-btn">
                   <span>Back to Blog</span>
                   <div className="talk-btn-icon">
                     <ArrowUpRight size={18} />
@@ -347,17 +347,12 @@ export default function BlogDetailsPage() {
                     type="button"
                     className="talk-btn"
                     onClick={() => setShowShareOptions((s) => !s)}
-                    aria-expanded={showShareOptions}
-                    aria-haspopup="menu"
-                    id="share-button"
                   >
                     <span>Share Blog</span>
                     <div className="talk-btn-icon">
                       <ArrowUpRight size={18} />
                     </div>
                   </button>
-
-                  <br />
 
                   {showShareOptions ? (
                     <div className="share-popup" role="menu" aria-labelledby="share-button">

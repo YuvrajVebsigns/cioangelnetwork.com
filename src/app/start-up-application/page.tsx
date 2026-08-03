@@ -60,7 +60,12 @@ export default function StartupApplicationPage() {
 
                 <p>Email your startup presentation and supporting documents to</p>
 
-                <a href="mailto:bindia@cioangelnetwork.com" className="startup-email-btn">
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@core-mediagroup.com&su=Enquiry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="startup-email-btn"
+                >
                   bindia@cioangelnetwork.com
                 </a>
               </div>

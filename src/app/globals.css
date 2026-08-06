@@ -3999,10 +3999,10 @@ main {
 .deal-portfolio-link {
   position: relative;
   padding: 8px 0;
-  color: #5c5050;
-  font-size: 15px;
+  color: #0f0e0e;
+  font-size: 26px;
   line-height: 1.4;
-  font-weight: 600;
+  font-weight: 540;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -8216,6 +8216,46 @@ main {
 
 .blog-breadcrumb span {
   color: white;
+}
+
+@media (max-width: 768px) {
+  .blog-hero {
+    width: calc(100% - 20px);
+    height: 280px;
+    margin: 90px auto 20px;
+    border-radius: 16px;
+  }
+
+  .blog-hero-media,
+  .blog-hero-overlay {
+    border-radius: 16px;
+  }
+
+  .blog-hero-content {
+    padding: 16px;
+  }
+
+  .blog-hero-content h1 {
+    font-size: 34px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .blog-breadcrumb {
+    padding: 6px 14px;
+    gap: 5px;
+  }
+
+  .blog-breadcrumb a,
+  .blog-breadcrumb p,
+  .blog-breadcrumb span {
+    font-size: 16px;
+  }
+
+  .blog-home-icon {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 /* =========================================================

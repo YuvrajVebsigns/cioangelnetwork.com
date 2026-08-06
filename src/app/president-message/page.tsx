@@ -56,7 +56,7 @@ export default function PresidentMessagePage() {
 
                 <div className="profile-info">
                   <h3>Anoop Mathur</h3>
-                  <span>Founder, CIO Angel Network (CAN)</span>
+                  <span>Founder, CORE MEDIA</span>
                 </div>
               </div>
 

@@ -299,8 +299,8 @@ export default function BlogPage() {
               <Image
                 src="/assets/home/home.png" // Replace with your image path
                 alt="Home"
-                width={28}
-                height={38}
+                width={38}
+                height={48}
                 className="blog-home-icon"
               />
               <span>Home</span>

@@ -1,11 +1,42 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Mail, Send } from 'lucide-react';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
+import { submitWebsiteSubscription } from '@/services/subscribe.service';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatusMessage(null);
+
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
+      setStatusMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await submitWebsiteSubscription(trimmedEmail);
+      setStatusMessage('Thank you for subscribing!');
+      setEmail('');
+    } catch (error) {
+      setStatusMessage(
+        error instanceof Error ? error.message : 'Subscription failed. Please try again.',
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <footer className="footer-section">
       {/* MAIN FOOTER */}
@@ -64,13 +95,27 @@ export default function Footer() {
             <div className="footer-widget">
               <h4 className="footer-title">Subscribe</h4>
 
-              <form className="footer-subscribe">
-                <input type="email" placeholder="Enter your email" className="footer-input" />
+              <form className="footer-subscribe" onSubmit={handleSubmit}>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="footer-input"
+                  value={email}
+                  onChange={(event) => setEmail(event.currentTarget.value)}
+                  required
+                />
 
-                <button type="submit" className="footer-submit" aria-label="Subscribe">
+                <button
+                  type="submit"
+                  className="footer-submit"
+                  aria-label="Subscribe"
+                  disabled={isSubmitting}
+                >
                   <Send size={18} />
                 </button>
               </form>
+
+              {statusMessage ? <p className="footer-subscribe-message">{statusMessage}</p> : null}
               <br />
               <h2 className="footer-description1">Office Address</h2>
               <p className="footer-description">

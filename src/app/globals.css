@@ -2262,7 +2262,7 @@ main {
 .contact-form-area {
   background: #810b0b;
   padding: 42px 50px;
-  height: 450px;
+  height: 520px;
   border-radius: 24px;
   margin-top: 40px;
   position: relative;
@@ -2494,6 +2494,421 @@ main {
   .dot-3 {
     top: 53%;
     left: 77%;
+  }
+}
+
+/* =========================================================
+   CUSTOM CAPTCHA
+========================================================= */
+
+.contact-captcha {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.captcha-title {
+  display: block;
+  margin-bottom: 7px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   CAPTCHA CARD
+========================================================= */
+
+.custom-captcha {
+  width: 60%;
+  min-height: 64px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 10px 12px;
+
+  background: #f2ecec;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* =========================================================
+   CAPTCHA CHECK BOX
+========================================================= */
+
+.captcha-check {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #bdbdbd;
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #ffffff;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+/* Default small indicator */
+
+.captcha-check > span {
+  width: 9px;
+  height: 9px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background: #c7c7c7;
+}
+
+/* =========================================================
+   CAPTCHA CONTENT
+========================================================= */
+
+.captcha-content {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.captcha-content strong {
+  display: block;
+
+  color: #222222;
+
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+.captcha-content small {
+  display: block;
+
+  color: #777777;
+
+  font-size: 10px;
+  line-height: 15px;
+  font-weight: 400;
+}
+
+/* =========================================================
+   I'M HUMAN BUTTON
+========================================================= */
+
+.captcha-verify-button {
+  height: 38px;
+  min-width: 96px;
+
+  padding: 0 13px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #a40000;
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.captcha-verify-button:hover:not(:disabled) {
+  background: #820000;
+
+  box-shadow: 0 5px 14px rgba(164, 0, 0, 0.25);
+}
+
+.captcha-verify-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.captcha-verify-button:disabled {
+  background: #c8c8c8;
+  color: #777777;
+
+  cursor: not-allowed;
+
+  opacity: 0.8;
+
+  box-shadow: none;
+}
+
+/* =========================================================
+   VERIFIED STATE
+========================================================= */
+
+.custom-captcha-verified {
+  background: #f4faf5;
+
+  border-color: #a8d4b2;
+
+  box-shadow: 0 0 0 2px rgba(37, 138, 67, 0.06);
+}
+
+.custom-captcha-verified .captcha-content strong {
+  color: #258a43;
+}
+
+.custom-captcha-verified .captcha-content small {
+  color: #548360;
+}
+
+/* =========================================================
+   VERIFIED CHECK
+========================================================= */
+
+.captcha-check-success {
+  border-color: #258a43;
+
+  background: #258a43;
+
+  color: #ffffff;
+}
+
+.captcha-check-success svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* =========================================================
+   VERIFYING STATE
+========================================================= */
+
+.captcha-check-loading {
+  border-color: #a40000;
+
+  background: #fff5f5;
+
+  color: #a40000;
+}
+
+.captcha-spin {
+  animation: captchaSpin 0.9s linear infinite;
+}
+
+@keyframes captchaSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   ERROR STATE
+========================================================= */
+
+.custom-captcha-error {
+  background: #fff7f7;
+
+  border-color: #e0aaaa;
+}
+
+.custom-captcha-error .captcha-check {
+  border-color: #c62828;
+}
+
+.custom-captcha-error .captcha-check > span {
+  background: #c62828;
+}
+
+.custom-captcha-error .captcha-content strong {
+  color: #a40000;
+}
+
+.custom-captcha-error .captcha-content small {
+  color: #a45a5a;
+}
+
+/* =========================================================
+   CAPTCHA REFRESH BUTTON
+========================================================= */
+
+.captcha-refresh-icon-button {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid #d0d0d0;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #a40000;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease,
+    opacity 0.25s ease;
+}
+
+.captcha-refresh-icon-button:hover:not(:disabled) {
+  background: #fff4f4;
+
+  border-color: #a40000;
+}
+
+.captcha-refresh-icon-button:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.captcha-refresh-icon-button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   INVISIBLE TURNSTILE CONTAINER
+========================================================= */
+
+.turnstile-invisible {
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  overflow: hidden !important;
+
+  opacity: 0 !important;
+
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   CAPTCHA + SUBMIT BUTTON SPACING
+========================================================= */
+
+.contact-captcha + .contact-btn {
+  margin-top: 2px;
+}
+
+/* =========================================================
+   CAPTCHA MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .contact-captcha {
+    margin-top: 12px;
+  }
+
+  .custom-captcha {
+    min-height: 66px;
+
+    padding: 10px;
+
+    gap: 9px;
+  }
+
+  .captcha-content strong {
+    font-size: 12px;
+  }
+
+  .captcha-content small {
+    font-size: 9px;
+  }
+
+  .captcha-verify-button {
+    min-width: 90px;
+
+    height: 36px;
+
+    padding: 0 10px;
+
+    font-size: 10px;
+  }
+
+  .captcha-refresh-icon-button {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+}
+
+/* =========================================================
+   CAPTCHA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .captcha-title {
+    font-size: 11px;
+  }
+
+  .custom-captcha {
+    min-height: auto;
+
+    padding: 10px;
+
+    flex-wrap: wrap;
+  }
+
+  .captcha-check {
+    width: 27px;
+    height: 27px;
+    min-width: 27px;
+  }
+
+  .captcha-content {
+    flex: 1;
+  }
+
+  .captcha-verify-button {
+    width: 100%;
+
+    margin-top: 4px;
+  }
+
+  .captcha-refresh-icon-button {
+    margin-left: auto;
   }
 }
 
@@ -11890,6 +12305,183 @@ s .dialogues-badge-mark {
 .footer-copy {
   font-size: 14px;
   color: #1f1f1f;
+}
+
+/* =========================================================
+   FOOTER SUBSCRIPTION POPUP
+========================================================= */
+
+.footer-popup {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: auto;
+  max-width: 380px;
+  min-width: 280px;
+
+  padding: 14px 16px;
+
+  background: rgba(255, 255, 255, 0.98);
+  color: #7a0d0d;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+
+  animation: footerPopupSlideIn 0.35s ease forwards;
+}
+
+/* Popup dot */
+
+.footer-popup-dot {
+  width: 12px;
+  height: 12px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #a6191b;
+
+  box-shadow: 0 0 0 4px rgba(166, 25, 27, 0.12);
+}
+
+/* Popup message */
+
+.footer-popup p {
+  flex: 1;
+
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 600;
+
+  color: #7a0d0d;
+}
+
+/* Close button */
+
+.footer-popup button {
+  flex-shrink: 0;
+
+  width: 28px;
+  height: 28px;
+
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+  color: #7a0d0d;
+
+  font-size: 22px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-popup button:hover {
+  background: rgba(122, 13, 13, 0.08);
+  color: #a40000;
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   POPUP ANIMATION
+========================================================= */
+
+@keyframes footerPopupSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px) translateX(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* =========================================================
+   SUBSCRIBE BUTTON STATES
+========================================================= */
+
+.footer-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.footer-submit:disabled:hover {
+  background: #9d0000;
+  transform: none;
+}
+
+/* =========================================================
+   MOBILE POPUP
+========================================================= */
+
+@media (max-width: 768px) {
+  .footer-popup {
+    top: 90px;
+    left: 16px;
+    right: 16px;
+
+    width: auto;
+    min-width: 0;
+    max-width: none;
+
+    padding: 14px 15px;
+  }
+
+  .footer-popup p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-popup {
+    top: 80px;
+    left: 12px;
+    right: 12px;
+
+    padding: 13px 14px;
+
+    border-radius: 12px;
+  }
+
+  .footer-popup-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .footer-popup p {
+    font-size: 13px;
+  }
+
+  .footer-popup button {
+    width: 26px;
+    height: 26px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 1100px) {
